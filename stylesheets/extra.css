@@ -1,4 +1,10 @@
 .md-grid {
     max-width: 1440px; 
   }
+
+  .md-content img {
+    border-width: 3px;
+    border-style: solid;
+    border-color: gray;
+  }
   
