@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deploying-nasas-cfs" class="md-skip">
+        <a href="#nasas-core-flight-system-cfs" class="md-skip">
           Skip to content
         </a>
       
@@ -204,6 +204,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -277,6 +279,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -304,6 +308,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -357,7 +363,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -365,6 +373,8 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">
@@ -397,8 +407,7 @@
                   
 
 
-  <h1>Core Flight System</h1>
-
+<h1 id="nasas-core-flight-system-cfs">NASA's Core Flight System (cFS)</h1>
 <p>NASA's Core Flight System (cFS) is a platform for spacecraft flight software development. It's designed to be a highly reusable, scalable, and configurable system that can support various spaceflight missions, including satellites, spacecraft, and other space-related applications. The cFS consists of a core set of reusable software components known as the Core Flight Executive (cFE), which provides the infrastructure for building flight software applications. These applications can perform various functions such as data collection, spacecraft control, and communication.</p>
 <p>One of the key features of the cFS is its modular architecture, which allows developers to add or modify components according to the specific needs of their mission without altering the core system. This modularity and configurability make the cFS a cost-effective and efficient solution for spaceflight software development.</p>
 <p>The cFS is released under the NASA Open Source Agreement (NOSA), making it freely available for anyone to use, modify, and distribute. This openness has facilitated a growing community of users and contributors from NASA, other government agencies, industry, and academia, who collaborate to improve and expand the system's capabilities.</p>
@@ -406,8 +415,12 @@
 <h2 id="deploying-nasas-cfs">Deploying NASA's cFS</h2>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker pull hackethos/cfs
 </span></code></pre></div>
-<p><img alt="alt text" src="../image-11.png" /></p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker run --cap-add CAP_SYS_RESOURCE --net=openc3-cosmos-network --name cfs -p1234:1234/udp -p1235:1235 --rm hackethos/cfs
+<figure>
+<p><img alt="alt text" src="../image-11.png" width="900" />
+  </p>
+<figcaption>cFS Container Running</figcaption>
+</figure>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--cap-add<span class="w"> </span>CAP_SYS_RESOURCE<span class="w"> </span>--net<span class="o">=</span>openc3-cosmos-network<span class="w"> </span>--name<span class="w"> </span>cfs<span class="w"> </span>-p1234:1234/udp<span class="w"> </span>-p1235:1235<span class="w"> </span>--rm<span class="w"> </span>hackethos/cfs
 </span></code></pre></div>
 <p><img alt="alt text" src="../image-12.png" /></p>
 <p><img alt="alt text" src="../image-13.png" /></p>
@@ -527,8 +540,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
