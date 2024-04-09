@@ -1,0 +1,50 @@
+site_name: ETHOS Labs - BYOS
+copyright: © 2024, ETHOS Labs, LLC  - Please Do Not Redistribute
+site_author: Tim Fowler
+
+extra:
+  generator: false
+
+extra_css:
+  - stylesheets/extra.css
+
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - content.code.copy
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: red
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+      primary: red
+
+nav:
+  - Intro: index.md
+  - 'OpenC3 Cosmos': 'cosmos.md'
+  - 'Core Flight System': 'cfs.md'
+  - 'Build Your Own': 'byos.md'
+
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - md_in_html
+  - attr_list
