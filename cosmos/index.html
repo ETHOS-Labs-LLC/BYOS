@@ -440,11 +440,10 @@
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git clone https://github.com/OpenC3/cosmos.git
 </span></code></pre></div>
 <figure>
-<p><img alt="alt text" src="../image-11.png" width="900" />
+<p><img alt="alt text" src="../image-3.png" width="900" />
   </p>
-<figcaption>Pulling cFS Docker Container</figcaption>
+<figcaption>Cloning OpenC3 COMSOS Repository</figcaption>
 </figure>
-<p><img alt="alt text" src="../image-3.png" /></p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cd cosmos
 </span></code></pre></div>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nano compose.yaml
@@ -459,11 +458,10 @@
 </span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
 </span></code></pre></div></p>
 <figure>
-<p><img alt="alt text" src="../image-11.png" width="900" />
+<p><img alt="alt text" src="../image-4.png" width="900" />
   </p>
-<figcaption>Pulling cFS Docker Container</figcaption>
+<figcaption>COSMOS compose.yaml Default</figcaption>
 </figure>
-<p><img alt="alt text" src="../image-4.png" /></p>
 <div class="language-yaml highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="w">  </span><span class="nt">openc3-operator</span><span class="p">:</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${OPENC3_USER_ID:-1001}:${OPENC3_GROUP_ID:-1001}&quot;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${OPENC3_REGISTRY}/${OPENC3_NAMESPACE}/openc3-operator${OPENC3_IMAGE_SUFFIX}:${OPENC3_TAG}&quot;</span>
@@ -474,96 +472,63 @@
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
 </span></code></pre></div>
 <figure>
-<p><img alt="alt text" src="../image-11.png" width="900" />
+<p><img alt="alt text" src="../image-5.png" width="900" />
   </p>
-<figcaption>Pulling cFS Docker Container</figcaption>
+<figcaption>Modified Ports Section in openc3-operator Container Config</figcaption>
 </figure>
-<p><img alt="alt text" src="../image-5.png" /></p>
 <p><code>CRTL + x</code>, then <code>y</code> to save.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>./openc3.sh run
 </span></code></pre></div>
 <figure>
-<p><img alt="alt text" src="../image-11.png" width="900" />
+<p><img alt="alt text" src="../image-6.png" width="900" />
   </p>
-<figcaption>Pulling cFS Docker Container</figcaption>
+<figcaption>Running OpenC3 COSMOS</figcaption>
 </figure>
-<p><img alt="alt text" src="../image-6.png" /></p>
 <figure>
-<p><img alt="alt text" src="../image-11.png" width="900" />
+<p><img alt="alt text" src="../image-7.png" width="900" />
   </p>
-<figcaption>Pulling cFS Docker Container</figcaption>
+<figcaption>Startup Complete</figcaption>
 </figure>
-<p><img alt="alt text" src="../image-7.png" /></p>
 <p><code>docekr ps</code></p>
 <figure>
-<p><img alt="alt text" src="../image-11.png" width="900" />
+<p><img alt="alt text" src="../image-8.png" width="900" />
   </p>
-<figcaption>Pulling cFS Docker Container</figcaption>
+<figcaption>Docker PS Output Showing Containers Running</figcaption>
 </figure>
-<p><img alt="alt text" src="../image-8.png" /></p>
-<p><code>localhost:2900</code></p>
-<p>You will be prompted to set a password. Feel free to chose any password you would like. Just make sure to remember it.</p>
+<p>In a browser, navigate to <code>http://localhost:2900</code> and you will be prompted to set a password. Feel free to chose any password you would like. Just make sure to remember it.</p>
 <figure>
-<p><img alt="alt text" src="../image-11.png" width="900" />
+<p><img alt="alt text" src="../image-9.png" width="900" />
   </p>
-<figcaption>Pulling cFS Docker Container</figcaption>
+<figcaption>CSOMOS Web Interface</figcaption>
 </figure>
-<p><img alt="alt text" src="../image-9.png" /></p>
 <p>After getting logged in...</p>
 <figure>
-<p><img alt="alt text" src="../image-11.png" width="900" />
+<p><img alt="alt text" src="../image-10.png" width="900" />
   </p>
-<figcaption>Pulling cFS Docker Container</figcaption>
-</figure>
-<p><img alt="alt text" src="../image-10.png" /></p>
-<p>In this lab, you will be deploying OpenC3 COSMOS to act as both your mission control center and ground station and then learning about some of its capabilities. </p>
-<figure>
-  <img alt="OpenC3 COSMOS" src="./media/cosmos.png" width="900" />
-  <figcaption>OpenC3 COSMOS</figcaption>
-</figure>
-<p>To get started, you need to open a terminal and navigate to the <code>~/ICSS-2024.03/Cosmos</code> directory and then executing the ```./openc3.sh script using the commands down below:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>~/ICSS-2024-03/Cosmos
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>./openc3.sh<span class="w"> </span>run
-</span></code></pre></div>
-<figure>
-  <img alt="alt text" src="media/cosmos_run.png" width="900" />
-  <figcaption>Starting COSMOS</figcaption>
-</figure>
-<p>In a browser, navigate to <code>http://localhost:2900</code> and if prompted for a password, choose a password of your choice. If you are not prompted to choose a password, try <code>password</code>.</p>
-<figure>
-  <img alt="alt text" src="media/cosmos_passwd.png" width="900" />
-  <figcaption>Choose Password if Prompted</figcaption>
-</figure>
-<figure>
-  <img alt="alt text" src="media/cosmos_logged_in.png" width="900" />
-  <figcaption>Successfully Logged Into COSMOS</figcaption>
+<figcaption>Logged Into COSMOS</figcaption>
 </figure>
 <h2 id="getting-the-lay-of-the-land">Getting the lay of the land</h2>
 <p>Now that you have logged into COSMOS, it is time to get familiar with it and what it is capable of doing.</p>
 <p>On the left side of the screen, you will find the primary navigation menu as shown below:</p>
 <figure>
-  <img alt="alt text" src="media/cosmos_side_nav.png" width="300" />
+  <img alt="alt text" src="../cosmos_side_nav.png" width="300" />
   <figcaption>COSMOS Sidebar Navigation</figcaption>
 </figure>
 <p>In the main section of your window you will the <code>CmdTlmServer</code> interface that has a row of options called <code>Interfaces</code>,<code>Tagrets</code>,<code>Cmd packets</code>,<code>Tlm packets</code>,<code>Routers</code>, and <code>Status</code>.</p>
 <figure>
-  <img alt="alt text" src="media/cosmos_cmdtlm_server.png" width="900" />
+  <img alt="alt text" src="../cosmos_cmdtlm_server.png" width="900" />
   <figcaption>COSMOS CmdTlmServer Interface</figcaption>
 </figure>
 <p>The current deployment of COSMOS includes a demonstration plugin that has four interfaces, two of which will have a status of <code>Connected</code>.</p>
 <figure>
-  <img alt="alt text" src="media/cosmos_connected_interfaces.png" width="900" />
+  <img alt="alt text" src="../cosmos_connected_interfaces.png" width="900" />
   <figcaption>Connected Interfaces with Cmd and Tlm Packets</figcaption>
 </figure>
 <p>If you see that the packet counts for both <code>Cmd pkts</code> and <code>Tlm pkts</code> increasing, everyhing is working as expected and data is coming in and from your COSMOS instance. YOu can also look below the <code>CmdTlmServer</code> window to the <code>Log Messages</code> console as shown below to see that data is flowing.</p>
 <figure>
-  <img alt="alt text" src="media/cosmos_logs.png" width="900" />
+  <img alt="alt text" src="../cosmos_logs.png" width="900" />
   <figcaption>COSMOS Log Messge Console</figcaption>
 </figure>
-<div class="admonition note">
-<p class="admonition-title">!!! Notice !!!</p>
-<p>The rest of this lab is going to be instructor led to showcase some of the abilities of COSMOS. If you are not doing the labs live, each of the steps needed in future labs will be clearly defined, so you will be able to follow along at that time, but you are encouraged to follow along with the video of this portion of the class. </p>
-</div>
 
 
 
