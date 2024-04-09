@@ -399,14 +399,66 @@
 
   <h1>OpenC3 Cosmos</h1>
 
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo apt update &amp;&amp; sudo apt dist-upgrade -y
+</span></code></pre></div>
+<img alt="alt text" src="../image.png" /></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo apt install docker-compose -y
+</span></code></pre></div>
+<p><img alt="alt text" src="../image-1.png" /></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo groupadd docker
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo usermod -aG docker $USER
+</span></code></pre></div>
+<p>Log out and Log back in...</p>
+<p>open terminal and run: <code>docker version</code></p>
+<p><img alt="alt text" src="../image-2.png" /></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git clone https://github.com/OpenC3/cosmos.git
+</span></code></pre></div>
+<p><img alt="alt text" src="../image-3.png" /></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cd cosmos
+</span></code></pre></div>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>nano compose.yaml
+</span></code></pre></div>
+<p>Line 161
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="w">  </span><span class="nt">openc3-operator</span><span class="p">:</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${OPENC3_USER_ID:-1001}:${OPENC3_GROUP_ID:-1001}&quot;</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${OPENC3_REGISTRY}/${OPENC3_NAMESPACE}/openc3-operator${OPENC3_IMAGE_SUFFIX}:${OPENC3_TAG}&quot;</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unless-stopped&quot;</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="c1"># ports:</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span><span class="c1">#  - &quot;127.0.0.1:7779:7779&quot; # Open port for the demo router</span>
+</span><span id="__span-6-7"><a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+</span></code></pre></div></p>
+<p><img alt="alt text" src="../image-4.png" /></p>
+<div class="language-yaml highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="w">  </span><span class="nt">openc3-operator</span><span class="p">:</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${OPENC3_USER_ID:-1001}:${OPENC3_GROUP_ID:-1001}&quot;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${OPENC3_REGISTRY}/${OPENC3_NAMESPACE}/openc3-operator${OPENC3_IMAGE_SUFFIX}:${OPENC3_TAG}&quot;</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unless-stopped&quot;</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;1235:1235/udp&quot;</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="c1">#  - &quot;127.0.0.1:7779:7779&quot; # Open port for the demo router</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span>
+</span></code></pre></div>
+<p><img alt="alt text" src="../image-5.png" /></p>
+<p><code>CRTL + x</code>, then <code>y</code> to save.</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>./openc3.sh run
+</span></code></pre></div>
+<p><img alt="alt text" src="../image-6.png" /></p>
+<p><img alt="alt text" src="../image-7.png" /></p>
+<p><code>docekr ps</code></p>
+<p><img alt="alt text" src="../image-8.png" /></p>
+<p><code>localhost:2900</code></p>
+<p>You will be prompted to set a password. Feel free to chose any password you would like. Just make sure to remember it.</p>
+<p><img alt="alt text" src="../image-9.png" /></p>
+<p>After getting logged in...</p>
+<p><img alt="alt text" src="../image-10.png" /></p>
 <p>In this lab, you will be deploying OpenC3 COSMOS to act as both your mission control center and ground station and then learning about some of its capabilities. </p>
 <figure>
   <img alt="OpenC3 COSMOS" src="./media/cosmos.png" width="900" />
   <figcaption>OpenC3 COSMOS</figcaption>
 </figure>
 <p>To get started, you need to open a terminal and navigate to the <code>~/ICSS-2024.03/Cosmos</code> directory and then executing the ```./openc3.sh script using the commands down below:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/ICSS-2024-03/Cosmos
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>./openc3.sh<span class="w"> </span>run
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/ICSS-2024-03/Cosmos
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>sudo<span class="w"> </span>./openc3.sh<span class="w"> </span>run
 </span></code></pre></div>
 <figure>
   <img alt="alt text" src="media/cosmos_run.png" width="900" />
