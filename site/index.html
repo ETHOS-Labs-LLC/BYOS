@@ -15,7 +15,7 @@
         <link rel="next" href="cosmos/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="logo.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
     
     
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#byos-bring-your-own-satellite" class="md-skip">
+        <a href="#setting-up-your-virtual-machine" class="md-skip">
           Skip to content
         </a>
       
@@ -92,8 +92,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="." title="ETHOS Labs - BYOS" class="md-header__button md-logo" aria-label="ETHOS Labs - BYOS" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -110,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Intro
+              Introduction
             
           </span>
         </div>
@@ -213,8 +212,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="." title="ETHOS Labs - BYOS" class="md-nav__button md-logo" aria-label="ETHOS Labs - BYOS" data-md-component="logo">
       
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+  <img src="logo.png" alt="logo">
 
     </a>
     ETHOS Labs - BYOS
@@ -235,14 +233,12 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Intro
+    Introduction
   </span>
   
 
@@ -253,7 +249,7 @@
         
   
   <span class="md-ellipsis">
-    Intro
+    Introduction
   </span>
   
 
@@ -264,8 +260,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -368,8 +362,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -401,32 +393,43 @@
                   
 
 
-<h1 id="byos-bring-your-own-satellite">BYOS - Bring Your Own Satellite</h1>
-<h2 id="setting-up-your-virtual-machine">Setting up your Virtual Machine</h2>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo apt update &amp;&amp; sudo apt dist-upgrade -y
-</span></code></pre></div>
 <figure>
-<p><img alt="alt text" src="image.png" width="900" />
+<p><img alt="alt text" src="Ethos%20Labs-YT_Banner.png" width="900" /></p>
+</figure>
+<h1 style="text-align: center;"> B.Y.O.S. - Bring Your Own Satellite</h1>
+
+<h2 id="setting-up-your-virtual-machine">Setting up your Virtual Machine</h2>
+<p>Before you get started, you need to get your virtual machine setup. First you will want to update and upgrade Ubuntu using the following commands:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo apt update &amp;&amp; sudo apt dist-upgrade -y
+</span></code></pre></div></p>
+<figure>
+<p><img alt="alt text" src="image.png" />
   </p>
 <figcaption>Updating OS</figcaption>
 </figure>
+<p>Depending on how long it has been since you last updated your virtual machine, it may take a few moments. Once it is done, you need to install the only dependency for this workshop, <code>Docker</code> and all of its components. The easiest way to accomplish this is to install <code>docker-compose</code> using the following command:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo apt install docker-compose -y
 </span></code></pre></div>
 <figure>
-<p><img alt="alt text" src="image-1.png" />){ width="900" }
+<p><img alt="alt text" src="image-1.png" />
   </p>
 <figcaption>Installed Docker and Dependencies</figcaption>
 </figure>
+<p>Once <code>Docker</code> and its components are installed, you will want to add your user account to the <code>docker</code> group using the following commands:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>sudo groupadd docker
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo usermod -aG docker $USER
 </span></code></pre></div>
-<p>Log out and Log back in...</p>
-<p>open terminal and run: <code>docker version</code></p>
+<p>!!!
+    You may get a message that the group <code>docker</code> already exists - if so, just ignore it</p>
+<p>Lastly to have make sure the rights of the <code>docker</code> group are assessible to your user, you should log off of your VM and then log back in.   </p>
+<p>Once logged back in to your VM, you can open a terminal, <code>ctrl + alt + t</code> works well to do that, and then run the following command to make sure you are able to run Docker with no issues: <code>docker version</code></p>
 <figure>
-<p><img alt="alt text" src="image-2.png" width="900" />
+<p><img alt="alt text" src="image-2.png" />
   </p>
 <figcaption>Docker Version Output</figcaption>
 </figure>
+<p>If you output looks similar to above, you are ready to go.</p>
+<p>If you get an permissions error, you will need to run <strong>all</strong> Docker related commands with <code>sudo</code> prepended such as <code>sudo docker version</code>.</p>
 
 
 

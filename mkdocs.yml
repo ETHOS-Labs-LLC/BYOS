@@ -27,9 +27,11 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
       primary: red
+  logo: logo.png
+  favicon: logo.png
 
 nav:
-  - Intro: index.md
+  - Introduction: index.md
   - 'OpenC3 Cosmos': 'cosmos.md'
   - 'Core Flight System': 'cfs.md'
   - 'Build Your Own': 'byos.md'

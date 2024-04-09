@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-# OpenC3 COMSOS
+![alt text](black_logo.svg)
 
 OpenC3's COSMOS is a command and control system designed for small satellite missions. It is an evolution of the COSMOS software initially developed by Ball Aerospace, which has been widely used in the space industry for satellite command and control. COSMOS provides a comprehensive suite of tools for mission planning, telemetry and command processing, data analysis, and system simulation, making it a versatile solution for managing space missions.
 
