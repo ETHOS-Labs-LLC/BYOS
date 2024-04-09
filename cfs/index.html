@@ -327,6 +327,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#removing-cfs-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing cFS Plugin
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -392,6 +401,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#removing-cfs-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removing cFS Plugin
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -418,24 +436,48 @@
 <figure>
 <p><img alt="alt text" src="../image-11.png" width="900" />
   </p>
-<figcaption>cFS Container Running</figcaption>
+<figcaption>Pulling cFS Docker Container</figcaption>
 </figure>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--cap-add<span class="w"> </span>CAP_SYS_RESOURCE<span class="w"> </span>--net<span class="o">=</span>openc3-cosmos-network<span class="w"> </span>--name<span class="w"> </span>cfs<span class="w"> </span>-p1234:1234/udp<span class="w"> </span>-p1235:1235<span class="w"> </span>--rm<span class="w"> </span>hackethos/cfs
 </span></code></pre></div>
-<p><img alt="alt text" src="../image-12.png" /></p>
-<p><img alt="alt text" src="../image-13.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-12.png" width="600" />
+  </p>
+<figcaption>Starting cFS Docker Container</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-13.png" width="600" />
+  </p>
+<figcaption>cFS Container Running</figcaption>
+</figure>
 <p><code>docker network inspect openc3-cosmos-network</code></p>
-<p>cFS Container IP
-<img alt="alt text" src="../image-14.png" /></p>
-<p>Operator Container IP
-<img alt="alt text" src="../image-15.png" /></p>
+<p>cFS Container IP</p>
+<figure>
+<p><img alt="alt text" src="../image-14.png" width="600" />
+  </p>
+<figcaption>cFS Container IP Address</figcaption>
+</figure>
+<p>Operator Container IP</p>
+<figure>
+<p><img alt="alt text" src="../image-15.png" width="600" />
+  </p>
+<figcaption>OpenC3 Operator Container IP Address</figcaption>
+</figure>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./openc3.sh cli generate plugin CFS
 </span></code></pre></div>
-<p><img alt="alt text" src="../image-16.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-16.png" width="600" />
+  </p>
+<figcaption>Generating cFS Plugin for COSMOS</figcaption>
+</figure>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cd openc3-cosmos-cfs/
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>../openc3.sh cli generate target CFS
 </span></code></pre></div>
-<p><img alt="alt text" src="../image-17.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-17.png" width="600" />
+  </p>
+<figcaption>Generating cFS Target</figcaption>
+</figure>
 <p>Now, in your favorite text editor of choice, open the <code>plugin.txt</code> file and replace the contents with the following:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>VARIABLE<span class="w"> </span>ip<span class="w"> </span><span class="m">127</span>.0.0.1
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>VARIABLE<span class="w"> </span>port_tm<span class="w"> </span><span class="m">1235</span>
@@ -451,7 +493,11 @@
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>rm *
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>touch cfs_cmds.txt cfs_tlm.txt to_lab_cmds.txt
 </span></code></pre></div>
-<p><img alt="alt text" src="../image-18.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-18.png" width="600" />
+  </p>
+<figcaption>Creating Empty Files for Packet Definitions</figcaption>
+</figure>
 <p>Open the file <code>to_lab_cmds.txt</code> and insert the following content.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>COMMAND CFS TO_LAB_ENABLE BIG_ENDIAN &quot;Enable telemetry&quot;
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  #                   NAME      BITS TYPE   min VAL     max VAL    init VAL  DESCRIPTION
@@ -516,23 +562,80 @@
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>  # spare / alignment
 </span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>  APPEND_ITEM      SPARE       16   UINT            &quot;Spares&quot;
 </span></code></pre></div>
-<p><img alt="alt text" src="../image-19.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-19.png" width="600" />
+  </p>
+<figcaption>Building cFS COSMOS Plugin</figcaption>
+</figure>
 <p><code>wget https://byos.ethoslabs.space/openc3-cosmos-cfs-1.0.0.gem</code></p>
 <p>Click Here: <a href="../openc3-cosmos-cfs-1.0.0.gem">Download cFS Plugin</a></p>
-<p><img alt="alt text" src="../image-20.png" /></p>
-<p><img alt="alt text" src="../image-21.png" /></p>
-<p><img alt="alt text" src="../image-22.png" /></p>
-<p><img alt="alt text" src="../image-23.png" /></p>
-<p><img alt="alt text" src="../image-24.png" /></p>
-<p><img alt="alt text" src="../image-25.png" /></p>
-<p><img alt="alt text" src="../image-26.png" /></p>
-<p><img alt="alt text" src="../image-27.png" /></p>
-<p><img alt="alt text" src="../image-28.png" /></p>
-<p><img alt="alt text" src="../image-29.png" /></p>
-<p><img alt="alt text" src="../image-30.png" /></p>
-<p><img alt="alt text" src="../image-31.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-20.png" width="600" />
+  </p>
+<figcaption>Downloading Pre-generated Plugin</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-21.png" width="600" />
+  </p>
+<figcaption>Admin Console in COSMOS</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-22.png" width="600" />
+  </p>
+<figcaption>Click to Install Plugin</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-23.png" width="600" />
+  </p>
+<figcaption>Select cFS Plugin Gem file</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-24.png" width="600" />
+  </p>
+<figcaption>Set IP Varible to cFS Container IP</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-25.png" width="600" />
+  </p>
+<figcaption>CFS_INT Connected in COSMOS</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-26.png" width="600" />
+  </p>
+<figcaption>Setting DEST_IP Address in TO_LAB_ENABLE Command</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-27.png" width="600" />
+  </p>
+<figcaption>Sending Telecommand Packet</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-28.png" width="600" />
+  </p>
+<figcaption>cFS Container Showing Telemetry Output Enabled</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-29.png" width="600" />
+  </p>
+<figcaption>COSMOS Recieving TLM Packets from cFS</figcaption>
+</figure>
+<h2 id="removing-cfs-plugin">Removing cFS Plugin</h2>
+<figure>
+<p><img alt="alt text" src="../image-30.png" width="600" />
+  </p>
+<figcaption>Deleting cFS Plugin From Admin Console</figcaption>
+</figure>
+<figure>
+<p><img alt="alt text" src="../image-31.png" width="600" />
+  </p>
+<figcaption>Click Delete</figcaption>
+</figure>
 <p><code>CRTL + c</code></p>
-<p><img alt="alt text" src="../image-32.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-32.png" width="600" />
+  </p>
+<figcaption>CTRL + c Terminating cFS Container</figcaption>
+</figure>
 
 
 
