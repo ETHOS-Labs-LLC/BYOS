@@ -404,37 +404,93 @@
                   
 
 
-  <h1>Bring Your Own Satellite</h1>
+<h1 style="text-align: center;">Bring Your Own Satellite</h1>
 
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>                     _    _            _     _____                       _____            
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                    | |  | |          | |   / ____|                     / ____|           
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>                    | |__| | __ _  ___| | _| (___  _ __   __ _  ___ ___| |     ___  _ __  
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>                    |  __  |/ _` |/ __| |/ /\___ \| &#39;_ \ / _` |/ __/ _ \ |    / _ \| &#39;_ \ 
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>                    | |  | | (_| | (__|   &lt; ____) | |_) | (_| | (_|  __/ |___| (_) | | | |
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>                    |_|  |_|\__,_|\___|_|\_\_____/| .__/ \__,_|\___\___|\_____\___/|_| |_|
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>                                                | |                                     
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                                                |_|                                     
+<p>In this last section of the workshop, you will learn how you can deploy a pre-built satellite with a few more bells and whistles.</p>
+<hr />
+<p>Once again, you will use Docker to deploy your virtual satellite but this time, you do not have to build it from scratch. Rather, you will simply need to deploy the new satellite using the following command:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker run --net=openc3-cosmos-network --name HackSpaceCon -p1234:1234/udp -p1337:1337 --rm hackethos/hsc-1
 </span></code></pre></div>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker run --net=openc3-cosmos-network --name HackSpaceCon -p1234:1234/udp -p1337:1337 --rm hackethos/hsc-1
-</span></code></pre></div>
-<img alt="alt text" src="../image-63.png" /></p>
-<p><img alt="alt text" src="../image-34.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-63.png" />
+  </p>
+<figcaption>Deploying Docker Container</figcaption>
+</figure>
+<p>The previous command will download the container image and then deploy it with the name <code>HackSpaceCon</code>.</p>
+<p>Right after Docker has downloaded the container image, you should see the new satellite running in your terminal window like what is shown below.</p>
+<figure>
+<p><img alt="alt text" src="../image-34.png" />
+  </p>
+<figcaption>HackSpaceCon Satellite Running</figcaption>
+</figure>
+<p>With your <code>HackSpaceCon</code> satellite running, you will then need to download the pre-generated COSMOS plugin.</p>
 <p>In a new terminal window, you can then run the following command to download the pre-generated COMSOS plugin:</p>
 <p><code>wget https://byos.ethoslabs.space/openc3-cosmos-hackspacecon-1-1.0.0.gem</code></p>
 <p>OR you click the following link from within your <strong>VM</strong>'s browser:</p>
 <p>Click Here: <a href="../openc3-cosmos-hackspacecon-1-1.0.0.gem">Download HSC-1 Plugin</a></p>
-<p><img alt="alt text" src="../image-35.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-35.png" />
+  </p>
+<figcaption>Downloading Plugin File Via wget</figcaption>
+</figure>
+<p>After you have downloaded the plugin file, you need to get the IP address of your container using the following command, looking for the entry for <code>HackSpaceCon</code> as well as the <code>openc3-operator</code> container:</p>
 <p><code>docker network inspect openc3-cosmos-network</code></p>
-<p><img alt="alt text" src="../image-39.png" /></p>
-<p><img alt="alt text" src="../image-38.png" /></p>
-<p>click select</p>
-<p><img alt="alt text" src="../image-37.png" /></p>
-<p><img alt="alt text" src="../image-40.png" /></p>
-<p><img alt="alt text" src="../image-41.png" /></p>
-<p><img alt="alt text" src="../image-43.png" /></p>
-<p><img alt="alt text" src="../image-44.png" /></p>
-<p><img alt="alt text" src="../image-45.png" /></p>
-<p><img alt="alt text" src="../image-46.png" /></p>
+<figure>
+<p><img alt="alt text" src="../image-39.png" />
+  </p>
+<figcaption>HackSpaceCon Container IP Address</figcaption>
+</figure>
+<p>Once you have the IP address, you can switch over to your VM's browser and access the <code>Admin Console</code> within COSMOS, to be able to install the plugin.</p>
+<figure>
+<p><img alt="alt text" src="../image-38.png" />
+  </p>
+<figcaption>COSMOS Admin Console</figcaption>
+</figure>
+<p>Click on the middle section as highlighted above and then find your newly downloaded plugin and click <code>Select</code>.</p>
+<figure>
+<p><img alt="alt text" src="../image-37.png" />
+  </p>
+<figcaption>HackSpaceCon Plugin File Selection</figcaption>
+</figure>
+<p>Like the previous section you will need to populate the IP address field for you plugin and then click <code>Install</code>.</p>
+<figure>
+<p><img alt="alt text" src="../image-40.png" />
+  </p>
+<figcaption>Configuring Plugin and Installing</figcaption>
+</figure>
+<p>Once installation and configuration is complete, you can click on the <code>CmdTlmServer</code> menu option from the side menu and see that your new interface is connected.</p>
+<figure>
+<p><img alt="alt text" src="../image-41.png" />
+  </p>
+<figcaption>HackSpaceCon_1 Interface Connected in COSMOS</figcaption>
+</figure>
+<p>Next click on the <code>Command Sender</code> option and make sure <code>HackSpaceCon-1</code> is selected as the target. Then select <code>SAT_ENA_TLM</code> as the packet and in the <code>DEST_IP</code> field, insert the IP address of your <code>openc3-operator</code> container and then click <code>Send</code>.</p>
+<figure>
+<p><img alt="alt text" src="../image-44.png" />
+  </p>
+<figcaption>Sending SAT_ENA_TLM Command</figcaption>
+</figure>
+<p>Switching over to your terminal window where your <code>HackSpaceCon-</code> satellite is running, you should see that the satellite received the command successfully.</p>
+<figure>
+<p><img alt="alt text" src="../image-45.png" />
+  </p>
+<figcaption>Satellite Received Command</figcaption>
+</figure>
+<p>Switching back to COSMOS and clicking on the <code>CmdTlmSever</code> menu option and the <code>Tlm packets</code> option in the top bar, you should see that the packet <code>TLM_STATUS</code> has a packet count of one, meaning that it successfully received data from your satellite. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may need to expand the number of packets shown from the default 10 to a high number to see the packet.
+<figure markdown>
+<img alt="alt text" src="../image-64.png" />
+   <figcaption>Rows Per Page Selection</figcaption>
+</figure></p>
+</div>
+<figure>
+<p><img alt="alt text" src="../image-46.png" />
+  </p>
+<figcaption>Tlm Packets for HACKSPACECON_1</figcaption>
+</figure>
+<p>Feel free to play with the other commands for a moment. Once done, you can remove the plugin from COSMOS using the <code>Admin Console</code> by clicking on the trashcan icon and then you can stop your virtual satellite by hitting <code>crtl+c</code>.</p>
 
 
 

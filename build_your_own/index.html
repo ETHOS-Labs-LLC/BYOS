@@ -485,10 +485,10 @@
 
 <h1 style="text-align: center;">Build Your Own Satellite</h1>
 
-<p>In this portion of the workshop, you are doing to build and deploy your own simple virtual satellite and intergrate it with OpenC3 COSMOS.</p>
+<p>In this portion of the workshop, you are building and deploy your own simple virtual satellite and integrate it with OpenC3 COSMOS.</p>
 <hr />
 <h2 id="building-and-deploying-your-satellite">Building and Deploying Your Satellite</h2>
-<p>To get started, you will need to open a terminal window and create a working directory called BYOS. You can use the following command to create the direcrtory and move into it:</p>
+<p>To get started, you will need to open a terminal window and create a working directory called BYOS. You can use the following command to create the directory and move into it:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>BYOS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>BYOS
 </span></code></pre></div>
 <p>Once in the BYOS directory, you are going to need to create the file what will run your simulated satellite. Using your text editor of choice, create the file <code>sat.py</code>. If you are following along, you can use the following command to use the text editor <code>nano</code>:</p>
@@ -594,8 +594,8 @@ After adding the code to your <code>sat.py</code> file, the next step is to crea
 <p>You should see a message stating that your satellite is waiting for commands as in the image above.</p>
 <p>Congrats you deployed your virtual satellite but there is still work to be done.</p>
 <h2 id="generate-cosmos-plugin">Generate COSMOS Plugin.</h2>
-<p>In order to actually interact with your satellite, you need to create a plugin file that will allow COSMOS to talk to your virutal bird in the sky. </p>
-<p>First, in new terminal window navigate to your <code>cosmos</code> directory that you previously used when deploying COSMOS.</p>
+<p>To actually interact with your satellite, you need to create a plugin file that will allow COSMOS to talk to your virtual bird in the sky. </p>
+<p>First, in a new terminal window navigate to your <code>cosmos</code> directory that you previously used when deploying COSMOS.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>~/cosmos
 </span></code></pre></div>
 <p>Once in the <code>cosmos</code> directory, you will need to issue the following command to generate the plugin framework for your new plugin:</p>
@@ -606,7 +606,7 @@ After adding the code to your <code>sat.py</code> file, the next step is to crea
   </p>
 <figcaption>Generating BYOS Plugin for COSOMS</figcaption>
 </figure>
-<p>After successfully genertation of the plugin framework, you will need to move into the newly created directory use the command <code>cd openc3-cosmos-byos</code>.</p>
+<p>After successfully generation of the plugin framework, you will need to move into the newly created directory use the command <code>cd openc3-cosmos-byos</code>.</p>
 <p>Then, you can issue the following command to generate the targets structure needed, taking note of the two <code>..</code> before the slash. These are needed because the script is up one directory from where you are currently.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>../openc3.sh<span class="w"> </span>cli<span class="w"> </span>generate<span class="w"> </span>target<span class="w"> </span>BYOS
 </span></code></pre></div>
@@ -633,7 +633,7 @@ After adding the code to your <code>sat.py</code> file, the next step is to crea
 <p>Next, you need to navigate into the targets directory to the <code>cmd_tlm</code> directory using the following command:</p>
 <p><div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>targets/BYOS/cmd_tlm/
 </span></code></pre></div>
-Once there, you can start creating your packet definintion files, starting withe the telecommand file, <code>cmd.txt</code>. Open this file in an editor, replace any content in the file with the following:</p>
+Once there, you can start creating your packet definition files, starting with the telecommand file, <code>cmd.txt</code>. Open this file in an editor, replace any content in the file with the following:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>COMMAND BYOS PING BIG_ENDIAN &quot;Ping Satellite&quot;
 </span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;PING&quot; &quot;Ping Command&quot;
 </span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
@@ -654,7 +654,7 @@ Once there, you can start creating your packet definintion files, starting withe
   </p>
 <figcaption>Contents of cmd.txt in Nano</figcaption>
 </figure>
-<p>Save that file and then open the telemerty packet definition file <code>tlm.txt</code> and replace the contents of that file with the following:</p>
+<p>Save that file and then open the telemetry packet definition file <code>tlm.txt</code> and replace the contents of that file with the following:</p>
 <p><div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>TELEMETRY BYOS STAUS BIG_ENDIAN &quot;STATUS PKT&quot;
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4320 &quot;PACKET ID&quot;
 </span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    FORMAT_STRING &quot;0X%04X&quot;
@@ -690,7 +690,7 @@ Once there, you can start creating your packet definintion files, starting withe
 </span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>  &lt;figcaption&gt;Contents of tlm.txt in Nano&lt;/figcaption&gt;
 </span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>&lt;/figure&gt;
 </span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>
-</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>Now that your packet definition files are done, the next step is to build the plugin. To do this, you need to navigate back a few direcrtories using the command ```cd ../../../``` and then issuing the following command to build your plugin file:
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>Now that your packet definition files are done, the next step is to build the plugin. To do this, you need to navigate back a few directories using the command ```cd ../../../``` and then issuing the following command to build your plugin file:
 </span></code></pre></div>
 ../openc3.sh cli rake build VERSION=1.0.0 .
 ```</p>
@@ -700,7 +700,7 @@ Once there, you can start creating your packet definintion files, starting withe
 <figcaption>Building BYOS Plugin for COSOMS</figcaption>
 </figure>
 <p>Lastly, before loading your new plugin into COSMOS, you need to first get the IP address of your satellite container using the command <code>docker network inspect openc3-cosmos-network</code> and looking for the entry for <code>byos</code>.</p>
-<p>Now, go back to your browser and access the <code>Admin Console</code> within COSMOS to upload your new plugin file. CLick on the middle section where is says <code>Click to select...</code>.</p>
+<p>Now, go back to your browser and access the <code>Admin Console</code> within COSMOS to upload your new plugin file. Click on the middle section where is says <code>Click to select...</code>.</p>
 <figure>
 <p><img alt="alt text" src="../image-55.png" />
   </p>
@@ -712,7 +712,7 @@ Once there, you can start creating your packet definintion files, starting withe
   </p>
 <figcaption>BYOS Plugin File Selection</figcaption>
 </figure>
-<p>Once you click on <code>Select</code> you will be prompted to configure the plugin by providing the IP address of your satellite contianer, and then clicking install.</p>
+<p>Once you click on <code>Select</code> you will be prompted to configure the plugin by providing the IP address of your satellite container, and then clicking install.</p>
 <figure>
 <p><img alt="alt text" src="../image-57.png" />
   </p>
@@ -722,7 +722,7 @@ Once there, you can start creating your packet definintion files, starting withe
 <figure>
 <p><img alt="alt text" src="../image-58.png" />
   </p>
-<figcaption>BYOS Interface Conencted in COSMOS</figcaption>
+<figcaption>BYOS Interface Connected in COSMOS</figcaption>
 </figure>
 <p>Next, in the left side menu, click on <code>Command Sender</code> and then make sure that <code>BYOS</code> is selected.</p>
 <figure>
@@ -736,7 +736,7 @@ Once there, you can start creating your packet definintion files, starting withe
   </p>
 <figcaption>PING Command Selected to Send</figcaption>
 </figure>
-<p>If you switch over to your terminal, running your satellite container, you should see that the it received the command and sent a response.</p>
+<p>If you switch over to your terminal, running your satellite container, you should see that it received the command and sent a response.</p>
 <figure>
 <p><img alt="alt text" src="../image-61.png" />
   </p>
@@ -749,7 +749,7 @@ Once there, you can start creating your packet definintion files, starting withe
 <figcaption>COSMOS Packet Viewer with PING Packet Selected</figcaption>
 </figure>
 <p>If everything worked as expected, you should see that there is a value in the <code>RESULT</code> field as shown in the previous image.</p>
-<p><strong>Congratulations, you have successfully built, deployed and intergrated a virtual satellite</strong></p>
+<p><strong>Congratulations, you have successfully built, deployed and integrated a virtual satellite</strong></p>
 <p>Feel free to play with the other commands for a moment. Once done, you can remove the plugin from COSMOS using the <code>Admin Console</code> by clicking on the trashcan icon and then you can stop your virtual satellite by hitting <code>crtl+c</code>.</p>
 
 
