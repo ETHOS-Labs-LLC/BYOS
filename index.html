@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="logo.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.13">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.10">
     
     
       
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#setting-up-your-virtual-machine" class="md-skip">
+        <a href="#requirements" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Introduction
+              0x00 - Introduction
             
           </span>
         </div>
@@ -201,6 +201,8 @@
           
             
               
+                
+              
               <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -238,7 +240,7 @@
           
   
   <span class="md-ellipsis">
-    Introduction
+    0x00 - Introduction
   </span>
   
 
@@ -249,7 +251,7 @@
         
   
   <span class="md-ellipsis">
-    Introduction
+    0x00 - Introduction
   </span>
   
 
@@ -267,6 +269,15 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#setting-up-your-virtual-machine" class="md-nav__link">
@@ -296,7 +307,7 @@
         
   
   <span class="md-ellipsis">
-    OpenC3 Cosmos
+    0x01 - OpenC3 Cosmos
   </span>
   
 
@@ -316,7 +327,7 @@
         
   
   <span class="md-ellipsis">
-    Core Flight System
+    0x02 - Core Flight System
   </span>
   
 
@@ -336,7 +347,7 @@
         
   
   <span class="md-ellipsis">
-    Build Your Own
+    0x03 - Build Your Own
   </span>
   
 
@@ -353,7 +364,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -368,6 +381,15 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#setting-up-your-virtual-machine" class="md-nav__link">
@@ -398,6 +420,16 @@
 </figure>
 <h1 style="text-align: center;"> B.Y.O.S. - Bring Your Own Satellite</h1>
 
+<p>In this training class, attendees are introduced to the basics of satellite communication in a hands-on manner. Also, through the power of virtualization and open-source software, attendees will get a step-by-step guide to create their own personal satellite lab, while helping discover the fundamental principles of satellite communication, from orbital mechanics to data transmission protocols, as you design, simulate, and experiment with satellite systems in a risk-free, virtual environment.</p>
+<p>Unveil the secrets of satellite technology, gain hands-on experience with real-world scenarios, and configuring and controlling your virtual satellite. This unique learning experience equips you with the knowledge and practical skills needed to explore the possibilities of satellite communication. Unlock the universe of opportunities that satellite communication offers, right from your own laptop.</p>
+<hr />
+<h2 id="requirements">Requirements</h2>
+<p>Virtual Machine Running Ubuntu 22.04 LTS or later with 4 Cores and at least 4GB of Ram. Its is recommend you have a disk size of 30 GB.</p>
+<p>Both <code>AMD64</code> and <code>ARM64</code> versions are supporting by this documentation. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>32-Bit (x86) Virtual Machines are <strong>NOT</strong> supported!</p>
+</div>
 <h2 id="setting-up-your-virtual-machine">Setting up your Virtual Machine</h2>
 <p>Before you get started, you need to get your virtual machine setup. First you will want to update and upgrade Ubuntu using the following commands:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo apt update &amp;&amp; sudo apt dist-upgrade -y
@@ -429,7 +461,10 @@
 <figcaption>Docker Version Output</figcaption>
 </figure>
 <p>If you output looks similar to above, you are ready to go.</p>
-<p>If you get an permissions error, you will need to run <strong>all</strong> Docker related commands with <code>sudo</code> prepended such as <code>sudo docker version</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get an permissions error, you will need to run <strong>all</strong> Docker related commands with <code>sudo</code> prepended such as <code>sudo docker version</code> as well as OpenC3 commands.</p>
+</div>
 
 
 
@@ -437,8 +472,13 @@
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -478,7 +518,7 @@
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.instant", "content.code.copy"], "search": "assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.c8d2eff1.min.js"></script>
+      <script src="assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
     
   </body>
