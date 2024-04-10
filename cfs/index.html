@@ -457,14 +457,16 @@
 </figure>
 <p>Now that your cFS container is running, you need to generate a plugin for COSMOS that will allow COSMOS to be able to talk to cFS and vice-versus. </p>
 <p>If you want to see the entire process, expand the <code>Long Version</code> section below but for the purpose of this workshop, you can skip that section.</p>
-<details class="long version">
-<summary>Long</summary>
+<details class="long-version">
+<summary>Long-version</summary>
+<p>To generate a plugin for cFS to work with COSMOS you need to start with the following command from the <code>cosmos</code> directory.</p>
 <p><div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>./openc3.sh cli generate plugin CFS
 </span></code></pre></div>
 <figure markdown>
 <img alt="alt text" src="../image-16.png" />
 <figcaption>Generating cFS Plugin for COSMOS</figcaption>
 </figure></p>
+<p>Next, you need to <code>cd</code> into the newly created plugin directory to generate a target with the following commands:</p>
 <p><div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>cd openc3-cosmos-cfs/
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>../openc3.sh cli generate target CFS
 </span></code></pre></div>
@@ -473,7 +475,7 @@
 <figcaption>Generating cFS Target</figcaption>
 </figure></p>
 <p>Now, in your favorite text editor of choice, open the <code>plugin.txt</code> file and <strong>replace</strong> the contents with the following:</p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>VARIABLE<span class="w"> </span>ip<span class="w"> </span><span class="m">127</span>.0.0.1
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>VARIABLE<span class="w"> </span>ip<span class="w"> </span><span class="m">127</span>.0.0.1
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>VARIABLE<span class="w"> </span>port_tm<span class="w"> </span><span class="m">1235</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>VARIABLE<span class="w"> </span>port_tc<span class="w"> </span><span class="m">1234</span>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>VARIABLE<span class="w"> </span>cfs_target_name<span class="w"> </span>CFS
@@ -483,6 +485,7 @@
 </span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>INTERFACE<span class="w"> </span>&lt;%<span class="o">=</span><span class="w"> </span>cfs_target_name<span class="w"> </span>%&gt;_INT<span class="w"> </span>udp_interface.rb<span class="w"> </span>&lt;%<span class="o">=</span><span class="w"> </span>ip<span class="w"> </span>%&gt;<span class="w"> </span>&lt;%<span class="o">=</span><span class="w"> </span>port_tc<span class="w"> </span>%&gt;<span class="w"> </span>&lt;%<span class="o">=</span><span class="w"> </span>port_tm<span class="w"> </span>%&gt;<span class="w"> </span>nil<span class="w"> </span>nil<span class="w"> </span><span class="m">128</span><span class="w"> </span>nil<span class="w"> </span>nil
 </span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>MAP_TARGET<span class="w"> </span>&lt;%<span class="o">=</span><span class="w"> </span>cfs_target_name<span class="w"> </span>%&gt;
 </span></code></pre></div>
+Save that file and then navigate to the <code>targets/CFS/cmd_tlm</code> directory and issue the following commands:</p>
 <p><div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cd targets/CFS/cmd_tlm/
 </span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>rm *
 </span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>touch cfs_cmds.txt cfs_tlm.txt to_lab_cmds.txt
@@ -491,7 +494,7 @@
 <img alt="alt text" src="../image-18.png" />
 <figcaption>Creating Empty Files for Packet Definitions</figcaption>
 </figure></p>
-<p>Open the file <code>to_lab_cmds.txt</code> and insert the following content.</p>
+<p>Now you will create your first packet definition by opening the file <code>to_lab_cmds.txt</code> and insert the following content.</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>COMMAND CFS TO_LAB_ENABLE BIG_ENDIAN &quot;Enable telemetry&quot;
 </span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>#                   NAME      BITS TYPE   min VAL     max VAL    init VAL  DESCRIPTION
 </span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>APPEND_ID_PARAMETER STREAM_ID  16  UINT   0x1880      0x1880     0x1880    &quot;Stream ID&quot;
@@ -535,7 +538,7 @@
 </span><span id="__span-7-28"><a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>APPEND_PARAMETER       CHECKSUM     8   UINT   MIN_UINT8   MAX_UINT8   MIN_UINT8   &quot;&quot;
 </span></code></pre></div>
 <p>Finally, you need to open the file <code>cfs_tlm.txt</code> and insert the following content</p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>TELEMETRY CFS HK BIG_ENDIAN &quot;housekeeping telemetry&quot;
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>TELEMETRY CFS HK BIG_ENDIAN &quot;housekeeping telemetry&quot;
 </span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>#                NAME       BITS  TYPE    ID      DESCRIPTION
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>APPEND_ID_ITEM   STREAM_ID   16   UINT    0x0883  &quot;Stream ID&quot;
 </span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>    FORMAT_STRING &quot;0x%04X&quot;
@@ -555,7 +558,9 @@
 </span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a># spare / alignment
 </span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>APPEND_ITEM      SPARE       16   UINT            &quot;Spares&quot;
 </span></code></pre></div>
-<figure markdown>
+<p>Lastly, you need to navigate to the root directory of your plugin and build the plugin using the following command:</p>
+<p><code>cd ../../../</code> and <code>../openc3.sh cli rake build VERSION=1.0.0 .</code></p>
+<p><figure markdown>
 <img alt="alt text" src="../image-19.png" />
 <figcaption>Building cFS COSMOS Plugin</figcaption>
 </figure></p>
