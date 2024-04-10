@@ -18,6 +18,8 @@ hide:
 ```
 docker run --net=openc3-cosmos-network --name HackSpaceCon -p1234:1234/udp -p1337:1337 --rm hackethos/hsc-1
 ```
+![alt text](image-63.png)
+
 
 ![alt text](image-34.png)
 
