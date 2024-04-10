@@ -36,7 +36,9 @@ nav:
   - '0x00 - Introduction': index.md
   - '0x01 - OpenC3 Cosmos': 'cosmos.md'
   - '0x02 - Core Flight System': 'cfs.md'
-  - '0x03 - Build Your Own': 'byos.md'
+  - '0x03 - B.Y.O.S':
+    - "Build Your Own Satellite": 'build.md'
+    - "Bring Your Own Satellite":  bring.md
 
 
 markdown_extensions:
