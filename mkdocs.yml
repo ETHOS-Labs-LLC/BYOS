@@ -31,10 +31,10 @@ theme:
   favicon: logo.png
 
 nav:
-  - Introduction: index.md
-  - 'OpenC3 Cosmos': 'cosmos.md'
-  - 'Core Flight System': 'cfs.md'
-  - 'Build Your Own': 'byos.md'
+  - '0x00 - Introduction': index.md
+  - '0x01 - OpenC3 Cosmos': 'cosmos.md'
+  - '0x02 - Core Flight System': 'cfs.md'
+  - '0x03 - Build Your Own': 'byos.md'
 
 
 markdown_extensions:

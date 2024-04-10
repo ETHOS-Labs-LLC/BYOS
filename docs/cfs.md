@@ -19,6 +19,9 @@ The cFS is released under the NASA Open Source Agreement (NOSA), making it freel
 By providing a robust, flexible foundation for flight software development, the cFS supports NASA's missions and objectives in exploring space, advancing our understanding of the universe, and developing the technologies needed for future space exploration.
 
 ## Deploying NASA's cFS
+The first satellite you will be deploying will be a instance of cFS running in a Docker container. This is not a fully functional or operational but is a great example of what is possible using and open-source, flight proven software, in a virtual environment. 
+
+To get started, you need to pull the cFS Docker container from the Docker Hub, using the following command:
 
 ```
 docker pull hackethos/cfs
@@ -28,40 +31,27 @@ docker pull hackethos/cfs
   <figcaption>Pulling cFS Docker Container</figcaption>
 </figure>
 
+Once the container image has been downloaded successfully, you can launch the container using the following command:
 
 ```bash
 docker run --cap-add CAP_SYS_RESOURCE --net=openc3-cosmos-network --name cfs -p1234:1234/udp -p1235:1235 --rm hackethos/cfs
 ```
+
 <figure markdown>
 ![alt text](image-12.png)
   <figcaption>Starting cFS Docker Container</figcaption>
 </figure>
 
-
+After running the previous command, you should see out from the container that looks like what is shown below.
 
 <figure markdown>
 ![alt text](image-13.png)
   <figcaption>cFS Container Running</figcaption>
 </figure>
 
+Now that your cFS container is running, you need to generate a plugin for COSMOS that will allow COSMOS to be able to talk to cFS and vice-versus. 
 
-```docker network inspect openc3-cosmos-network```
-
-
-cFS Container IP
-<figure markdown>
-![alt text](image-14.png)
-  <figcaption>cFS Container IP Address</figcaption>
-</figure>
-
-
-
-Operator Container IP
-<figure markdown>
-![alt text](image-15.png)
-  <figcaption>OpenC3 Operator Container IP Address</figcaption>
-</figure>
-
+If you want to see the entire process, expand the ```Long Version``` section below but for the purpose of this workshop, you can skip that section.
 
 ??? Long Version
 
@@ -188,6 +178,8 @@ Operator Container IP
     </figure>
 
 
+If you skipped the ```Long Version``` you will need to download the pre-generated cFS plugin for COSMOS using the following command or downloading it from the lik that follows. If you use the link, download it from your browser in your VM.
+
 ```wget https://byos.ethoslabs.space/openc3-cosmos-cfs-1.0.0.gem```
 
 Click Here: [Download cFS Plugin](openc3-cosmos-cfs-1.0.0.gem)
@@ -196,85 +188,118 @@ Click Here: [Download cFS Plugin](openc3-cosmos-cfs-1.0.0.gem)
   <figcaption>Downloading Pre-generated Plugin</figcaption>
 </figure>
 
+The next step in the process is to grab the IP addresses of both your ```cFS``` container as well as the ```openc3-operator``` container. You can do this by running the following command and searching the output.
+
+```docker network inspect openc3-cosmos-network```
+
+Below is an example of cFS Container IP you may see.
+<figure markdown>
+![alt text](image-14.png)
+  <figcaption>cFS Container IP Address</figcaption>
+</figure>
+
+Below is an example of the Operator Container IP you may see
+<figure markdown>
+![alt text](image-15.png)
+  <figcaption>OpenC3 Operator Container IP Address</figcaption>
+</figure>
+
+!!! Note
+    Your IP addresses may not be in the 172.18.x.x range. That is okay.
+
+Now you will need to go back to COSMOS in your VM and click on the ```Admin Console``` section in the left side menu.
 
 <figure markdown>
 ![alt text](image-21.png){ width="900" }
   <figcaption>Admin Console in COSMOS</figcaption>
 </figure>
 
+Then in the middle section, click on the area where is says ```Click to select plugin...```
 
 <figure markdown>
 ![alt text](image-22.png){ width="900" }
   <figcaption>Click to Install Plugin</figcaption>
 </figure>
 
-
+A file selection popup will appear and you will need to navigate to where you cFS plugin is located and select it.
 
 <figure markdown>
 ![alt text](image-23.png){ width="900" }
   <figcaption>Select cFS Plugin Gem file</figcaption>
 </figure>
 
-
-
-
+After you select your plugin file, you will get prompted to configure the plugin. Here you will need to supply the IP address of your ```cFS``` container as shown below.
 
 <figure markdown>
 ![alt text](image-24.png){ width="900" }
   <figcaption>Set IP Varible to cFS Container IP</figcaption>
 </figure>
 
+After entering the IP address, you can click ```Install```. It will take a few moments for the plugin to be processed but you should see a message that states the process was completed.
+
+Once completed, you can navigate to the ```CmdTlmServer``` section of COSMOS where you will see the ```CFS_INT``` interface as been configured and connected.
 
 <figure markdown>
 ![alt text](image-25.png){ width="900" }
   <figcaption>CFS_INT Connected in COSMOS</figcaption>
 </figure>
 
-
+Next, you need to navigate to the ```Command Sender``` section from the left menu. ONce there, make sure that CFS is selected as the target and then select the ```TO_LAB_ENABLE``` Packet. With that packet selected, you will see a field called ```DEST_IP``` that you will need to populate with the ```openc3-operator``` container IP address, **making sure to preserve the single quotes.**
 
 <figure markdown>
 ![alt text](image-26.png){ width="900" }
   <figcaption>Setting DEST_IP Address in TO_LAB_ENABLE Command</figcaption>
 </figure>
 
-
+Now you are ready to click ```SEND```. In doing so, you should see an output like the one below.
 
 <figure markdown>
 ![alt text](image-27.png){ width="900" }
   <figcaption>Sending Telecommand Packet</figcaption>
 </figure>
 
+Now, switch over to your terminal running cFS and you should see that the command was successfully received.
 
 <figure markdown>
 ![alt text](image-28.png){ width="900" }
   <figcaption>cFS Container Showing Telemetry Output Enabled</figcaption>
 </figure>
 
+Now, back in COSMOS, if you navigate to the ```CmdTlmServer``` you should see that the ```CFS_INT``` interface is receiving TLM Packets.
 
 <figure markdown>
 ![alt text](image-29.png){ width="900" }
-  <figcaption>COSMOS Recieving TLM Packets from cFS</figcaption>
+  <figcaption>COSMOS Receiving TLM Packets from cFS</figcaption>
 </figure>
 
+As stated previously, this implementation of cFS is not feature complete but does demonstrate the fundamental concepts of telecommands and telemetry in a space system.
+
+---
+
 ## Removing cFS Plugin
+
+For the next section of this workshop, you will use the same port binding that your cFS container is currently using, so you need to do a little clean up to get ready. 
+
+First, you will navigate to the ```Admin Console``` section of COSMOS and find the cFS plugin and click on the trash can icon.
 
 <figure markdown>
 ![alt text](image-30.png){ width="900" }
   <figcaption>Deleting cFS Plugin From Admin Console</figcaption>
 </figure>
 
+When prompted, click on ```Delete``` to remove the plugin from COSMOS.
 
 <figure markdown>
 ![alt text](image-31.png){ width="900" }
   <figcaption>Click Delete</figcaption>
 </figure>
 
-
-
-```CRTL + c ```
+Next, you need to switch over to your terminal running cFS and stop it using ```CRTL + c ```
 
 <figure markdown>
 ![alt text](image-32.png){ width="900" }
   <figcaption>CTRL + c Terminating cFS Container</figcaption>
 </figure>
+
+Once cFS stops, the container will be removed but can redeployed at anytime.
 
