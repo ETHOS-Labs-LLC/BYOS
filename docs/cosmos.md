@@ -5,7 +5,7 @@ hide:
 
 ![alt text](black_logo.svg)
 
-OpenC3's COSMOS is a command and control system designed for small satellite missions. It is an evolution of the COSMOS software initially developed by Ball Aerospace, which has been widely used in the space industry for satellite command and control. COSMOS provides a comprehensive suite of tools for mission planning, telemetry and command processing, data analysis, and system simulation, making it a versatile solution for managing space missions.
+OpenC3's COSMOS is a command-and-control system designed for small satellite missions. It is an evolution of the COSMOS software initially developed by Ball Aerospace, which has been widely used in the space industry for satellite command and control. COSMOS provides a comprehensive suite of tools for mission planning, telemetry and command processing, data analysis, and system simulation, making it a versatile solution for managing space missions.
 
 The transition to OpenC3 represents a shift towards a more open and collaborative approach to space mission control software. OpenC3 aims to foster a community where users and developers can contribute to the development and improvement of COSMOS, ensuring it remains a state-of-the-art tool for mission control. This open-source philosophy allows for greater innovation, adaptability, and cost efficiency, as users can customize the software to meet their specific mission requirements without the constraints of proprietary software licenses.
 
@@ -21,7 +21,7 @@ By providing these capabilities within an open-source framework, OpenC3's COSMOS
 ---
 ## Deploying OpenC3 COSMOS
 
-OpenC3 COMSOS is going to be the command and control system that will be utilized to simulate the Ground Segment in your BYOS virtual environment. 
+OpenC3 COMSOS is going to be the command-and-control system that will be utilized to simulate the Ground Segment in your BYOS virtual environment. 
 
 
 To get started, you must clone the GitHub repository using the following command:
@@ -96,14 +96,14 @@ It will take some time for the process to run if it is the first time you are ru
 Once completed you should see output like what is shown below.
 
 !!! Note
-    If you get a permission error, trying running the previous command with ```sudo```.
+    If you get a permission error, try running the previous command with ```sudo```.
 
 <figure markdown>
 ![alt text](image-7.png)
   <figcaption>Startup Complete</figcaption>
 </figure>
 
-You can also confirm that COSMOS is running using the ```docekr ps``` command, which will show all of the running containers.
+You can also confirm that COSMOS is running using the ```docekr ps``` command, which will show all the running containers.
 
 <figure markdown>
 ![alt text](image-8.png)
@@ -111,7 +111,7 @@ You can also confirm that COSMOS is running using the ```docekr ps``` command, w
 </figure>
 
 
-Next in a browser in your **VM**, navigate to ```http://localhost:2900``` and you will be prompted to set a password. Feel free to chose any password you would like. Just make sure to remember it.
+Next in a browser in your **VM**, navigate to ```http://localhost:2900``` and you will be prompted to set a password. Feel free to choose any password you would like. Just make sure to remember it.
 
 <figure markdown>
 ![alt text](image-9.png){ width="900" }
@@ -127,7 +127,7 @@ After you are logged in, you will see a screen that looks like the following:
 </figure>
 
 ## Getting the lay of the land
-Now that you have logged into COSMOS, it is time to get familiar with it and what it is capable of doing.
+Now that you have logged into COSMOS, it is time to get familiar with it and what it can do.
 
 On the left side of the screen, you will find the primary navigation menu as shown below:
 

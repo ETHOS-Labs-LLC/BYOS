@@ -15,15 +15,15 @@ Unveil the secrets of satellite technology, gain hands-on experience with real-w
 
 ---
 ## Requirements
-Virtual Machine Running Ubuntu 22.04 LTS or later with 4 Cores and at least 4GB of Ram. Its is recommend you have a disk size of 30 GB.
+Virtual Machine Running Ubuntu 22.04 LTS or later with 4 Cores and at least 4GB of Ram. It is recommended you have a disk size of 30 GB.
 
-Both ```AMD64``` and ```ARM64``` versions are supporting by this documentation. 
+Both ```AMD64``` and ```ARM64``` versions are supported by this documentation. 
 
 !!! Note
     32-Bit (x86) Virtual Machines are **NOT** supported!
 
 ## Setting up your Virtual Machine
-Before you get started, you need to get your virtual machine setup. First you will want to update and upgrade Ubuntu using the following commands:
+Before you get started, you need to get your virtual machine set up. First you will want to update and upgrade Ubuntu using the following commands:
 ```
 sudo apt update && sudo apt dist-upgrade -y
 ```
@@ -33,7 +33,7 @@ sudo apt update && sudo apt dist-upgrade -y
   <figcaption>Updating OS</figcaption>
 </figure>
 
-Depending on how long it has been since you last updated your virtual machine, it may take a few moments. Once it is done, you need to install the only dependency for this workshop, ```Docker``` and all of its components. The easiest way to accomplish this is to install ```docker-compose``` using the following command:
+Depending on how long it has been since you last updated your virtual machine, it may take a few moments. Once it is done, you need to install the only dependency for this workshop, ```Docker``` and all its components. The easiest way to accomplish this is to install ```docker-compose``` using the following command:
 
 ```
 sudo apt install docker-compose -y
@@ -53,7 +53,7 @@ sudo usermod -aG docker $USER
 !!!
     You may get a message that the group ```docker``` already exists - if so, just ignore it
 
-Lastly to have make sure the rights of the ```docker``` group are assessible to your user, you should log off of your VM and then log back in.   
+Lastly to have make sure the rights of the ```docker``` group are accessible to your user, you should log off of your VM and then log back in.   
 
 Once logged back in to your VM, you can open a terminal, ```ctrl + alt + t``` works well to do that, and then run the following command to make sure you are able to run Docker with no issues: ```docker version```
 
@@ -62,7 +62,7 @@ Once logged back in to your VM, you can open a terminal, ```ctrl + alt + t``` wo
   <figcaption>Docker Version Output</figcaption>
 </figure>
 
-If you output looks similar to above, you are ready to go.
+If you output looks like the above, you are ready to go.
 
 !!! Note
-    If you get an permissions error, you will need to run **all** Docker related commands with ```sudo``` prepended such as ```sudo docker version``` as well as OpenC3 commands.
+    If you get a permissions error, you will need to run **all** Docker related commands with ```sudo``` prepended such as ```sudo docker version``` as well as OpenC3 commands.

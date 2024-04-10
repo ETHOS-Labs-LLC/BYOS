@@ -75,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#building-and-deploying-your-satellite" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -330,6 +335,17 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Build Your Own Satellite
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -339,6 +355,41 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-deploying-your-satellite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building and Deploying Your Satellite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-cosmos-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate COSMOS Plugin.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -393,6 +444,32 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-deploying-your-satellite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building and Deploying Your Satellite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generate-cosmos-plugin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate COSMOS Plugin.
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -406,12 +483,18 @@
                   
 
 
-  <h1>Build Your Own Satellite</h1>
+<h1 style="text-align: center;">Build Your Own Satellite</h1>
 
+<p>In this portion of the workshop, you are building and deploy your own simple virtual satellite and integrate it with OpenC3 COSMOS.</p>
+<hr />
+<h2 id="building-and-deploying-your-satellite">Building and Deploying Your Satellite</h2>
+<p>To get started, you will need to open a terminal window and create a working directory called BYOS. You can use the following command to create the directory and move into it:</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>BYOS<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>BYOS
 </span></code></pre></div>
+<p>Once in the BYOS directory, you are going to need to create the file what will run your simulated satellite. Using your text editor of choice, create the file <code>sat.py</code>. If you are following along, you can use the following command to use the text editor <code>nano</code>:</p>
 <p><code>nano sat.py</code></p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">socket</span>
+<p>In your editor of choice, you then need to insert the following code to the file and save it.</p>
+<p><div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">socket</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">import</span> <span class="nn">random</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">struct</span>
 </span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
@@ -477,6 +560,7 @@
 </span><span id="__span-1-64"><a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>        <span class="c1"># Unknown command</span>
 </span><span id="__span-1-65"><a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>        <span class="n">send_telemetry</span><span class="p">(</span><span class="s2">&quot;ERROR&quot;</span><span class="p">,</span><span class="s2">&quot;UNKNOWN_CMD&quot;</span><span class="p">)</span>
 </span></code></pre></div>
+After adding the code to your <code>sat.py</code> file, the next step is to create a Dockerfile that would be used to build your satellite into a Docker container. Open your favorite editor once again and save the following code to a file named <code>Dockerfile</code>.</p>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>nano<span class="w"> </span>Dockerfile
 </span></code></pre></div>
 <div class="language-Dockerfile highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c"># Use an official Python runtime as a parent image</span>
@@ -491,103 +575,182 @@
 </span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c"># Run the server when the container launches</span>
 </span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="s2">&quot;-u&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;./sat.py&quot;</span><span class="p">]</span>
 </span></code></pre></div>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>byos<span class="w"> </span>.
-</span></code></pre></div>
-<img alt="alt text" src="../image-47.png" /></p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--net<span class="o">=</span>openc3-cosmos-network<span class="w"> </span>--name<span class="w"> </span>byos<span class="w"> </span>-p1234:1234/udp<span class="w"> </span>-p1235:1235<span class="w"> </span>--rm<span class="w"> </span>byos
-</span></code></pre></div>
-<img alt="alt text" src="../image-48.png" /></p>
-<p>In new terminal window...
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>~/cosmos
+<p>Now it is time to build your satellite into a container with the following command:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>byos<span class="w"> </span>.
 </span></code></pre></div></p>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>./openc3.sh<span class="w"> </span>cli<span class="w"> </span>generate<span class="w"> </span>plugin<span class="w"> </span>BYOS
+<figure>
+<p><img alt="alt text" src="../image-47.png" />
+  </p>
+<figcaption>Building Docker Container</figcaption>
+</figure>
+<p>Once the build process has completed, you can deploy your freshly minted satellite using the following Docker command:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--net<span class="o">=</span>openc3-cosmos-network<span class="w"> </span>--name<span class="w"> </span>byos<span class="w"> </span>-p1234:1234/udp<span class="w"> </span>-p1235:1235<span class="w"> </span>--rm<span class="w"> </span>byos
 </span></code></pre></div>
-<img alt="alt text" src="../image-49.png" /></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>openc3-cosmos-byos
+<figure>
+<p><img alt="alt text" src="../image-48.png" />
+  </p>
+<figcaption>CDeploying Docker Container Satellite</figcaption>
+</figure>
+<p>You should see a message stating that your satellite is waiting for commands as in the image above.</p>
+<p>Congrats you deployed your virtual satellite but there is still work to be done.</p>
+<h2 id="generate-cosmos-plugin">Generate COSMOS Plugin.</h2>
+<p>To actually interact with your satellite, you need to create a plugin file that will allow COSMOS to talk to your virtual bird in the sky. </p>
+<p>First, in a new terminal window navigate to your <code>cosmos</code> directory that you previously used when deploying COSMOS.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>~/cosmos
 </span></code></pre></div>
-<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>../openc3.sh<span class="w"> </span>cli<span class="w"> </span>generate<span class="w"> </span>target<span class="w"> </span>BYOS
+<p>Once in the <code>cosmos</code> directory, you will need to issue the following command to generate the plugin framework for your new plugin:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>./openc3.sh<span class="w"> </span>cli<span class="w"> </span>generate<span class="w"> </span>plugin<span class="w"> </span>BYOS
 </span></code></pre></div>
-<img alt="alt text" src="../image-50.png" /></p>
-<p><code>nano plugin.txt</code></p>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>VARIABLE ip 127.0.0.1
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>VARIABLE port_tm 1234
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>VARIABLE port_tc 1235
-</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>VARIABLE byos_target_name BYOS
-</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
-</span><span id="__span-10-6"><a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>TARGET BYOS &lt;%= byos_target_name %&gt;
-</span><span id="__span-10-7"><a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>INTERFACE &lt;%= byos_target_name %&gt;_INT udp_interface.rb &lt;%= ip %&gt; &lt;%= port_tc %&gt; &lt;%= port_tm %&gt; nil nil 128 nil nil
-</span><span id="__span-10-8"><a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>  MAP_TARGET &lt;%= byos_target_name %&gt;
+<figure>
+<p><img alt="alt text" src="../image-49.png" />
+  </p>
+<figcaption>Generating BYOS Plugin for COSOMS</figcaption>
+</figure>
+<p>After successfully generation of the plugin framework, you will need to move into the newly created directory use the command <code>cd openc3-cosmos-byos</code>.</p>
+<p>Then, you can issue the following command to generate the targets structure needed, taking note of the two <code>..</code> before the slash. These are needed because the script is up one directory from where you are currently.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>../openc3.sh<span class="w"> </span>cli<span class="w"> </span>generate<span class="w"> </span>target<span class="w"> </span>BYOS
 </span></code></pre></div>
-<img alt="alt text" src="../image-51.png" /></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>targets/BYOS/cmd_tlm/
+<figure>
+<p><img alt="alt text" src="../image-50.png" />
+  </p>
+<figcaption>Generating BYOS Target for COSMOS</figcaption>
+</figure>
+<p>After the target has been generated, the next step is to edit the <code>plugin.txt</code> file using a text editor and adding the following content:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>VARIABLE ip 127.0.0.1
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>VARIABLE port_tm 1234
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>VARIABLE port_tc 1235
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>VARIABLE byos_target_name BYOS
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>TARGET BYOS &lt;%= byos_target_name %&gt;
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>INTERFACE &lt;%= byos_target_name %&gt;_INT udp_interface.rb &lt;%= ip %&gt; &lt;%= port_tc %&gt; &lt;%= port_tm %&gt; nil nil 128 nil nil
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>  MAP_TARGET &lt;%= byos_target_name %&gt;
 </span></code></pre></div>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>nano<span class="w"> </span>cmd.txt
+<figure>
+<p><img alt="alt text" src="../image-51.png" />
+  </p>
+<figcaption>Contents of plugin.txt in Nano</figcaption>
+</figure>
+<p>Next, you need to navigate into the targets directory to the <code>cmd_tlm</code> directory using the following command:</p>
+<p><div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>targets/BYOS/cmd_tlm/
 </span></code></pre></div>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>COMMAND BYOS PING BIG_ENDIAN &quot;Ping Satellite&quot;
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;PING&quot; &quot;Ping Command&quot;
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>COMMAND BYOS STATUS BIG_ENDIAN &quot;Get Status&quot;
-</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;STATUS&quot; &quot;Command to Query Status&quot;
-</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
-</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>COMMAND BYOS GET_TEMP BIG_ENDIAN &quot;Get TEMP&quot;
-</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;GET_TEMP&quot; &quot;Command to Query Temp&quot;
-</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
-</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>COMMAND BYOS SET_MODE BIG_ENDIAN &quot;Set Satellite Mode&quot;
-</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;SET_MODE&quot; &quot;Command to Set Mode of Satellite&quot;
-</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>
-</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>COMMAND BYOS REBOOT BIG_ENDIAN &quot;REBOOT Satellite&quot;
-</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;REBOOT&quot; &quot;Reboot Satellite&quot;
+Once there, you can start creating your packet definition files, starting with the telecommand file, <code>cmd.txt</code>. Open this file in an editor, replace any content in the file with the following:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>COMMAND BYOS PING BIG_ENDIAN &quot;Ping Satellite&quot;
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;PING&quot; &quot;Ping Command&quot;
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>COMMAND BYOS STATUS BIG_ENDIAN &quot;Get Status&quot;
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;STATUS&quot; &quot;Command to Query Status&quot;
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>COMMAND BYOS GET_TEMP BIG_ENDIAN &quot;Get TEMP&quot;
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;GET_TEMP&quot; &quot;Command to Query Temp&quot;
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+</span><span id="__span-11-10"><a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>COMMAND BYOS SET_MODE BIG_ENDIAN &quot;Set Satellite Mode&quot;
+</span><span id="__span-11-11"><a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;SET_MODE&quot; &quot;Command to Set Mode of Satellite&quot;
+</span><span id="__span-11-12"><a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+</span><span id="__span-11-13"><a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>COMMAND BYOS REBOOT BIG_ENDIAN &quot;REBOOT Satellite&quot;
+</span><span id="__span-11-14"><a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>  APPEND_PARAMETER CMD_STRING 0 STRING &quot;REBOOT&quot; &quot;Reboot Satellite&quot;
 </span></code></pre></div>
-<p><img alt="alt text" src="../image-52.png" /></p>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>nano<span class="w"> </span>tlm.txt
+<figure>
+<p><img alt="alt text" src="../image-52.png" />
+  </p>
+<figcaption>Contents of cmd.txt in Nano</figcaption>
+</figure>
+<p>Save that file and then open the telemetry packet definition file <code>tlm.txt</code> and replace the contents of that file with the following:</p>
+<p><div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>TELEMETRY BYOS STAUS BIG_ENDIAN &quot;STATUS PKT&quot;
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4320 &quot;PACKET ID&quot;
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    FORMAT_STRING &quot;0X%04X&quot;
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>TELEMETRY BYOS PING BIG_ENDIAN &quot;PING PKT&quot;
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4321 &quot;PACKET ID&quot;
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    FORMAT_STRING &quot;0X%04X&quot;
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>TELEMETRY BYOS TEMP BIG_ENDIAN &quot;TEMP PKT&quot;
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4322 &quot;PACKET ID&quot;
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>    FORMAT_STRING &quot;0X%04X&quot;
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>TELEMETRY BYOS MODE BIG_ENDIAN &quot;MODE PKT&quot;
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4323 &quot;PACKET ID&quot;
+</span><span id="__span-12-18"><a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>    FORMAT_STRING &quot;0X%04X&quot;
+</span><span id="__span-12-19"><a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
+</span><span id="__span-12-20"><a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>
+</span><span id="__span-12-21"><a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>TELEMETRY BYOS REBOOT BIG_ENDIAN &quot;REBOOT PKT&quot;
+</span><span id="__span-12-22"><a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4324 &quot;PACKET ID&quot;
+</span><span id="__span-12-23"><a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>    FORMAT_STRING &quot;0X%04X&quot;
+</span><span id="__span-12-24"><a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
+</span><span id="__span-12-25"><a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>
+</span><span id="__span-12-26"><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>TELEMETRY BYOS ERROR BIG_ENDIAN &quot;ERROR PKT&quot;
+</span><span id="__span-12-27"><a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4325 &quot;PACKET ID&quot;
+</span><span id="__span-12-28"><a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>    FORMAT_STRING &quot;0X%04X&quot;
+</span><span id="__span-12-29"><a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
+</span><span id="__span-12-30"><a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>  ```
+</span><span id="__span-12-31"><a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>&lt;figure markdown&gt;
+</span><span id="__span-12-32"><a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>![alt text](image-53.png)
+</span><span id="__span-12-33"><a id="__codelineno-12-33" name="__codelineno-12-33" href="#__codelineno-12-33"></a>  &lt;figcaption&gt;Contents of tlm.txt in Nano&lt;/figcaption&gt;
+</span><span id="__span-12-34"><a id="__codelineno-12-34" name="__codelineno-12-34" href="#__codelineno-12-34"></a>&lt;/figure&gt;
+</span><span id="__span-12-35"><a id="__codelineno-12-35" name="__codelineno-12-35" href="#__codelineno-12-35"></a>
+</span><span id="__span-12-36"><a id="__codelineno-12-36" name="__codelineno-12-36" href="#__codelineno-12-36"></a>Now that your packet definition files are done, the next step is to build the plugin. To do this, you need to navigate back a few directories using the command ```cd ../../../``` and then issuing the following command to build your plugin file:
 </span></code></pre></div>
-<p><div class="language-text highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>TELEMETRY BYOS STAUS BIG_ENDIAN &quot;STATUS PKT&quot;
-</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4320 &quot;PACKET ID&quot;
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>    FORMAT_STRING &quot;0X%04X&quot;
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
-</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
-</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>TELEMETRY BYOS PING BIG_ENDIAN &quot;PING PKT&quot;
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4321 &quot;PACKET ID&quot;
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>    FORMAT_STRING &quot;0X%04X&quot;
-</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
-</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
-</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>TELEMETRY BYOS TEMP BIG_ENDIAN &quot;TEMP PKT&quot;
-</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4322 &quot;PACKET ID&quot;
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>    FORMAT_STRING &quot;0X%04X&quot;
-</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
-</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
-</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>TELEMETRY BYOS MODE BIG_ENDIAN &quot;MODE PKT&quot;
-</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4323 &quot;PACKET ID&quot;
-</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>    FORMAT_STRING &quot;0X%04X&quot;
-</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
-</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
-</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>TELEMETRY BYOS REBOOT BIG_ENDIAN &quot;REBOOT PKT&quot;
-</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4324 &quot;PACKET ID&quot;
-</span><span id="__span-15-23"><a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>    FORMAT_STRING &quot;0X%04X&quot;
-</span><span id="__span-15-24"><a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
-</span><span id="__span-15-25"><a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>
-</span><span id="__span-15-26"><a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>TELEMETRY BYOS ERROR BIG_ENDIAN &quot;ERROR PKT&quot;
-</span><span id="__span-15-27"><a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>  APPEND_ID_ITEM PACKET_ID 16 UINT 0x4325 &quot;PACKET ID&quot;
-</span><span id="__span-15-28"><a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a>    FORMAT_STRING &quot;0X%04X&quot;
-</span><span id="__span-15-29"><a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a>  APPEND_ITEM RESULT 96 STRING &quot;RESPONSE&quot;
-</span><span id="__span-15-30"><a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>  ```
-</span><span id="__span-15-31"><a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a>
-</span><span id="__span-15-32"><a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a>![alt text](image-53.png)
-</span><span id="__span-15-33"><a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a>
-</span><span id="__span-15-34"><a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a>
-</span><span id="__span-15-35"><a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a>```bash
-</span><span id="__span-15-36"><a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a>cd ../../../
-</span><span id="__span-15-37"><a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a>../openc3.sh cli rake build VERSION=1.0.0 .
-</span></code></pre></div>
-<img alt="alt text" src="../image-54.png" /></p>
-<p><img alt="alt text" src="../image-55.png" /></p>
-<p><img alt="alt text" src="../image-56.png" /></p>
-<p><img alt="alt text" src="../image-57.png" /></p>
-<p><img alt="alt text" src="../image-58.png" /></p>
-<p><img alt="alt text" src="../image-59.png" /></p>
-<p><img alt="alt text" src="../image-60.png" /></p>
-<p><img alt="alt text" src="../image-61.png" /></p>
-<p><img alt="alt text" src="../image-62.png" /></p>
+../openc3.sh cli rake build VERSION=1.0.0 .
+```</p>
+<figure>
+<p><img alt="alt text" src="../image-54.png" />
+  </p>
+<figcaption>Building BYOS Plugin for COSOMS</figcaption>
+</figure>
+<p>Lastly, before loading your new plugin into COSMOS, you need to first get the IP address of your satellite container using the command <code>docker network inspect openc3-cosmos-network</code> and looking for the entry for <code>byos</code>.</p>
+<p>Now, go back to your browser and access the <code>Admin Console</code> within COSMOS to upload your new plugin file. Click on the middle section where is says <code>Click to select...</code>.</p>
+<figure>
+<p><img alt="alt text" src="../image-55.png" />
+  </p>
+<figcaption>COSMOS Admin Console</figcaption>
+</figure>
+<p>A file selection window will pop up and you then need to navigate the folder where your plugin was built, <code>~/cosmos/openc3-cosmos-byos</code> and select your plugin file.</p>
+<figure>
+<p><img alt="alt text" src="../image-56.png" />
+  </p>
+<figcaption>BYOS Plugin File Selection</figcaption>
+</figure>
+<p>Once you click on <code>Select</code> you will be prompted to configure the plugin by providing the IP address of your satellite container, and then clicking install.</p>
+<figure>
+<p><img alt="alt text" src="../image-57.png" />
+  </p>
+<figcaption>BYOS Plugin Configuration</figcaption>
+</figure>
+<p>After COSMOS has completed configuring and installing the plugin, you can navigate over to the <code>CmdTlmServer</code> menu option to see that your interface is now connected within COSMOS.</p>
+<figure>
+<p><img alt="alt text" src="../image-58.png" />
+  </p>
+<figcaption>BYOS Interface Connected in COSMOS</figcaption>
+</figure>
+<p>Next, in the left side menu, click on <code>Command Sender</code> and then make sure that <code>BYOS</code> is selected.</p>
+<figure>
+<p><img alt="alt text" src="../image-59.png" />
+  </p>
+<figcaption>COSMOS Command Sender</figcaption>
+</figure>
+<p>In the <code>Select Packet</code> field, select the <code>PING</code> packet and then click on <code>Send</code>.</p>
+<figure>
+<p><img alt="alt text" src="../image-60.png" />
+  </p>
+<figcaption>PING Command Selected to Send</figcaption>
+</figure>
+<p>If you switch over to your terminal, running your satellite container, you should see that it received the command and sent a response.</p>
+<figure>
+<p><img alt="alt text" src="../image-61.png" />
+  </p>
+<figcaption>PING Command Received and ACK Sent Back to COSMOS</figcaption>
+</figure>
+<p>To confirm that COSMOS has received the telemetry packet sent by your satellite, you can click on <code>Packet Viewer</code> in the side menu, then select BYOS as the target if not already selected, then <code>PING</code> as the packet you wish to view.</p>
+<figure>
+<p><img alt="alt text" src="../image-62.png" />
+  </p>
+<figcaption>COSMOS Packet Viewer with PING Packet Selected</figcaption>
+</figure>
+<p>If everything worked as expected, you should see that there is a value in the <code>RESULT</code> field as shown in the previous image.</p>
+<p><strong>Congratulations, you have successfully built, deployed and integrated a virtual satellite</strong></p>
+<p>Feel free to play with the other commands for a moment. Once done, you can remove the plugin from COSMOS using the <code>Admin Console</code> by clicking on the trashcan icon and then you can stop your virtual satellite by hitting <code>crtl+c</code>.</p>
 
 
 

@@ -19,7 +19,7 @@ The cFS is released under the NASA Open Source Agreement (NOSA), making it freel
 By providing a robust, flexible foundation for flight software development, the cFS supports NASA's missions and objectives in exploring space, advancing our understanding of the universe, and developing the technologies needed for future space exploration.
 
 ## Deploying NASA's cFS
-The first satellite you will be deploying will be a instance of cFS running in a Docker container. This is not a fully functional or operational but is a great example of what is possible using and open-source, flight proven software, in a virtual environment. 
+The first satellite you will be deploying will be a instance of cFS running in a Docker container. This is not fully functional or operational but is a great example of what is possible using and open-source, flight proven software, in a virtual environment. 
 
 To get started, you need to pull the cFS Docker container from the Docker Hub, using the following command:
 
@@ -228,7 +228,7 @@ Then in the middle section, click on the area where is says ```Click to select p
   <figcaption>Click to Install Plugin</figcaption>
 </figure>
 
-A file selection popup will appear and you will need to navigate to where you cFS plugin is located and select it.
+A file selection popup will appear, and you will need to navigate to where you cFS plugin is located and select it.
 
 <figure markdown>
 ![alt text](image-23.png){ width="900" }
@@ -244,7 +244,7 @@ After you select your plugin file, you will get prompted to configure the plugin
 
 After entering the IP address, you can click ```Install```. It will take a few moments for the plugin to be processed but you should see a message that states the process was completed.
 
-Once completed, you can navigate to the ```CmdTlmServer``` section of COSMOS where you will see the ```CFS_INT``` interface as been configured and connected.
+Once completed, you can navigate to the ```CmdTlmServer``` section of COSMOS where you will see the ```CFS_INT``` interface has been configured and connected.
 
 <figure markdown>
 ![alt text](image-25.png){ width="900" }
@@ -291,7 +291,7 @@ First, you will navigate to the ```Admin Console``` section of COSMOS and find t
 
 <figure markdown>
 ![alt text](image-30.png){ width="900" }
-  <figcaption>Deleting cFS Plugin From Admin Console</figcaption>
+  <figcaption>Deleting cFS Plugin from Admin Console</figcaption>
 </figure>
 
 When prompted, click on ```Delete``` to remove the plugin from COSMOS.
@@ -308,5 +308,5 @@ Next, you need to switch over to your terminal running cFS and stop it using ```
   <figcaption>CTRL + c Terminating cFS Container</figcaption>
 </figure>
 
-Once cFS stops, the container will be removed but can redeployed at anytime.
+Once cFS stops, the container will be removed but can be redeployed at any time.
 

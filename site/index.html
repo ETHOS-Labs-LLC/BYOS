@@ -488,14 +488,14 @@
 <p>Unveil the secrets of satellite technology, gain hands-on experience with real-world scenarios, and configuring and controlling your virtual satellite. This unique learning experience equips you with the knowledge and practical skills needed to explore the possibilities of satellite communication. Unlock the universe of opportunities that satellite communication offers, right from your own laptop.</p>
 <hr />
 <h2 id="requirements">Requirements</h2>
-<p>Virtual Machine Running Ubuntu 22.04 LTS or later with 4 Cores and at least 4GB of Ram. Its is recommend you have a disk size of 30 GB.</p>
-<p>Both <code>AMD64</code> and <code>ARM64</code> versions are supporting by this documentation. </p>
+<p>Virtual Machine Running Ubuntu 22.04 LTS or later with 4 Cores and at least 4GB of Ram. It is recommended you have a disk size of 30 GB.</p>
+<p>Both <code>AMD64</code> and <code>ARM64</code> versions are supported by this documentation. </p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>32-Bit (x86) Virtual Machines are <strong>NOT</strong> supported!</p>
 </div>
 <h2 id="setting-up-your-virtual-machine">Setting up your Virtual Machine</h2>
-<p>Before you get started, you need to get your virtual machine setup. First you will want to update and upgrade Ubuntu using the following commands:
+<p>Before you get started, you need to get your virtual machine set up. First you will want to update and upgrade Ubuntu using the following commands:
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo apt update &amp;&amp; sudo apt dist-upgrade -y
 </span></code></pre></div></p>
 <figure>
@@ -503,7 +503,7 @@
   </p>
 <figcaption>Updating OS</figcaption>
 </figure>
-<p>Depending on how long it has been since you last updated your virtual machine, it may take a few moments. Once it is done, you need to install the only dependency for this workshop, <code>Docker</code> and all of its components. The easiest way to accomplish this is to install <code>docker-compose</code> using the following command:</p>
+<p>Depending on how long it has been since you last updated your virtual machine, it may take a few moments. Once it is done, you need to install the only dependency for this workshop, <code>Docker</code> and all its components. The easiest way to accomplish this is to install <code>docker-compose</code> using the following command:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo apt install docker-compose -y
 </span></code></pre></div>
 <figure>
@@ -517,17 +517,17 @@
 </span></code></pre></div>
 <p>!!!
     You may get a message that the group <code>docker</code> already exists - if so, just ignore it</p>
-<p>Lastly to have make sure the rights of the <code>docker</code> group are assessible to your user, you should log off of your VM and then log back in.   </p>
+<p>Lastly to have make sure the rights of the <code>docker</code> group are accessible to your user, you should log off of your VM and then log back in.   </p>
 <p>Once logged back in to your VM, you can open a terminal, <code>ctrl + alt + t</code> works well to do that, and then run the following command to make sure you are able to run Docker with no issues: <code>docker version</code></p>
 <figure>
 <p><img alt="alt text" src="image-2.png" />
   </p>
 <figcaption>Docker Version Output</figcaption>
 </figure>
-<p>If you output looks similar to above, you are ready to go.</p>
+<p>If you output looks like the above, you are ready to go.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>If you get an permissions error, you will need to run <strong>all</strong> Docker related commands with <code>sudo</code> prepended such as <code>sudo docker version</code> as well as OpenC3 commands.</p>
+<p>If you get a permissions error, you will need to run <strong>all</strong> Docker related commands with <code>sudo</code> prepended such as <code>sudo docker version</code> as well as OpenC3 commands.</p>
 </div>
 
 
