@@ -53,7 +53,9 @@ Now that your cFS container is running, you need to generate a plugin for COSMOS
 
 If you want to see the entire process, expand the ```Long Version``` section below but for the purpose of this workshop, you can skip that section.
 
-??? Long Version
+??? Long-Version
+
+    To generate a plugin for cFS to work with COSMOS you need to start with the following command from the ```cosmos``` directory.
 
     ```
     ./openc3.sh cli generate plugin CFS
@@ -63,6 +65,7 @@ If you want to see the entire process, expand the ```Long Version``` section bel
     <figcaption>Generating cFS Plugin for COSMOS</figcaption>
     </figure>
 
+    Next, you need to ```cd``` into the newly created plugin directory to generate a target with the following commands:
 
     ```
     cd openc3-cosmos-cfs/
@@ -87,7 +90,7 @@ If you want to see the entire process, expand the ```Long Version``` section bel
     INTERFACE <%= cfs_target_name %>_INT udp_interface.rb <%= ip %> <%= port_tc %> <%= port_tm %> nil nil 128 nil nil
     MAP_TARGET <%= cfs_target_name %>
     ```
-
+    Save that file and then navigate to the ```targets/CFS/cmd_tlm``` directory and issue the following commands:
 
     ```
     cd targets/CFS/cmd_tlm/
@@ -99,8 +102,7 @@ If you want to see the entire process, expand the ```Long Version``` section bel
     <figcaption>Creating Empty Files for Packet Definitions</figcaption>
     </figure>
 
-
-    Open the file ```to_lab_cmds.txt``` and insert the following content.
+    Now you will create your first packet definition by opening the file ```to_lab_cmds.txt``` and insert the following content.
 
     ```
     COMMAND CFS TO_LAB_ENABLE BIG_ENDIAN "Enable telemetry"
@@ -172,6 +174,11 @@ If you want to see the entire process, expand the ```Long Version``` section bel
     # spare / alignment
     APPEND_ITEM      SPARE       16   UINT            "Spares"
     ```
+
+    Lastly, you need to navigate to the root directory of your plugin and build the plugin using the following command:
+
+    ```cd ../../../``` and ```../openc3.sh cli rake build VERSION=1.0.0 .```
+
     <figure markdown>
     ![alt text](image-19.png)
     <figcaption>Building cFS COSMOS Plugin</figcaption>
