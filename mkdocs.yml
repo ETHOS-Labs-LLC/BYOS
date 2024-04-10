@@ -19,16 +19,18 @@ theme:
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-      primary: red
+      primary: black
+      accent: red
 
     # Palette toggle for dark mode
     - scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-      primary: red
-  logo: logo.png
-  favicon: logo.png
+      primary: black
+      accent: red
+  logo: Logo.png
+  favicon: Logo.png
 
 nav:
   - '0x00 - Introduction': index.md
