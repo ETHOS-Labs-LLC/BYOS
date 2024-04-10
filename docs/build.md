@@ -5,7 +5,7 @@ hide:
 
 
 ```bash
-mkdir BYOS & cd BYOS
+mkdir BYOS && cd BYOS
 ```
 
 
@@ -103,13 +103,15 @@ CMD ["python","-u", "./sat.py"]
 ```bash
 docker build -t byos .
 ```
-
+![alt text](image-47.png)
 
 ```bash
 docker run --net=openc3-cosmos-network --name byos -p1234:1234/udp -p1235:1235 --rm byos
 ```
+![alt text](image-48.png)
 
 
+In new terminal window...
 ```bash
 cd ~/cosmos
 ```
@@ -117,14 +119,18 @@ cd ~/cosmos
 ```bash
 ./openc3.sh cli generate plugin BYOS
 ```
+![alt text](image-49.png)
 
 ```bash
 cd openc3-cosmos-byos
 ```
 
+
 ```bash
 ../openc3.sh cli generate target BYOS
 ```
+![alt text](image-50.png)
+
 
 ```nano plugin.txt```
 
@@ -139,7 +145,7 @@ TARGET BYOS <%= byos_target_name %>
 INTERFACE <%= byos_target_name %>_INT udp_interface.rb <%= ip %> <%= port_tc %> <%= port_tm %> nil nil 128 nil nil
   MAP_TARGET <%= byos_target_name %>
 ```
-
+![alt text](image-51.png)
 
 ```bash
 cd targets/BYOS/cmd_tlm/
@@ -166,9 +172,12 @@ COMMAND BYOS REBOOT BIG_ENDIAN "REBOOT Satellite"
   APPEND_PARAMETER CMD_STRING 0 STRING "REBOOT" "Reboot Satellite"
 ```
 
+![alt text](image-52.png)
+
 ```bash
 nano tlm.txt
 ```
+
 
 ```
 TELEMETRY BYOS STAUS BIG_ENDIAN "STATUS PKT"
@@ -202,10 +211,29 @@ TELEMETRY BYOS ERROR BIG_ENDIAN "ERROR PKT"
   APPEND_ITEM RESULT 96 STRING "RESPONSE"
   ```
 
+![alt text](image-53.png)
+
 
 ```bash
 cd ../../../
 ../openc3.sh cli rake build VERSION=1.0.0 .
 ```
+![alt text](image-54.png)
+
+![alt text](image-55.png)
+
+![alt text](image-56.png)
+
+![alt text](image-57.png)
+
+![alt text](image-58.png)
+
+![alt text](image-59.png)
+
+![alt text](image-60.png)
+
+![alt text](image-61.png)
+
+![alt text](image-62.png)
 
 
