@@ -86,7 +86,9 @@ while True:
         send_telemetry("ERROR","UNKNOWN_CMD")
 ```
 
-After adding the code to your **sat.py** file, the next step is to create a Dockerfile that would be used to build your satellite into a Docker container. Open your favorite editor once again and save the following code to a file named **Dockerfile**.
+Press **"CTRL + S"** and **"CTRL + X"** to save and exit the file.  
+
+After adding the code to your **sat.py** file, the next step is to create a **Dockerfile** that would be used to build your satellite into a Docker container. Open your favorite editor once again and save the following code to a file named **Dockerfile**.
 
 ```
 nano Dockerfile
@@ -124,7 +126,7 @@ docker run --net=openc3-cosmos-network --name byos -p1234:1234/udp -p1235:1235 -
 
 You should see a message stating that your satellite is waiting for commands as in the image above.
 
-Congrats you deployed your virtual satellite but there is still work to be done.
+**Congrats you deployed your virtual satellite but there is still work to be done.**
 
 ## Generate COSMOS Plugin.
 
@@ -228,7 +230,7 @@ TELEMETRY BYOS ERROR BIG_ENDIAN "ERROR PKT"
   APPEND_ID_ITEM PACKET_ID 16 UINT 0x4325 "PACKET ID"
     FORMAT_STRING "0X%04X"
   APPEND_ITEM RESULT 96 STRING "RESPONSE"
-  ```
+```
 
 ![alt text](build-your-own-media/image-53.png)
 
@@ -240,7 +242,13 @@ Now that your packet definition files are done, the next step is to build the pl
 
 ![alt text](build-your-own-media/image-54.png)
 
-Lastly, before loading your new plugin into COSMOS, you need to first get the IP address of your satellite container using the command **docker network inspect openc3-cosmos-network** and looking for the entry for **byos**.
+Lastly, before loading your new plugin into COSMOS, you need to first get the IP address of your satellite container using the following command:
+
+```
+docker network inspect openc3-cosmos-network
+```
+
+Look for the entry for **byos**.
 
 Now, go back to your browser and access the **Admin Console** within COSMOS to upload your new plugin file. Click on the middle section where is says **Click to select...**.
 

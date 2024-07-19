@@ -2,7 +2,7 @@
 
 # B.Y.O.S. - Bring Your Own Satellite
 
-In this training class, attendees are introduced to the basics of satellite communication in a hands-on manner. Also, through the power of virtualization and open-source software, attendees will get a step-by-step guide to create their own personal satellite lab, while helping discover the fundamental principles of satellite communication, from orbital mechanics to data transmission protocols, as you design, simulate, and experiment with satellite systems in a risk-free, virtual environment.
+In this training class, attendees are introduced to the basics of satellite communication in a **hands-on** manner. Also, through the power of virtualization and open-source software, attendees will get a step-by-step guide to create their own personal satellite lab, while helping discover the fundamental principles of satellite communication, from orbital mechanics to data transmission protocols, as you design, simulate, and experiment with satellite systems in a risk-free, virtual environment.
 
 Unveil the secrets of satellite technology, gain hands-on experience with real-world scenarios, and configuring and controlling your virtual satellite. This unique learning experience equips you with the knowledge and practical skills needed to explore the possibilities of satellite communication. Unlock the universe of opportunities that satellite communication offers, right from your own laptop.
 
@@ -43,8 +43,11 @@ sudo usermod -aG docker $USER
 
 Lastly to have make sure the rights of the **docker** group are accessible to your user, you should log off of your VM and then log back in.   
 
-Once logged back in to your VM, you can open a terminal, **ctrl + alt + t** works well to do that, and then run the following command to make sure you are able to run Docker with no issues: **docker version**
+Once logged back in to your VM, you can open a terminal, **CTRL + ALT + T** works well to do that, and then run the following command to make sure you are able to run **Docker** with no issues: 
 
+```
+docker version
+```
 
 ![alt text](index-media/image-2.png)
 

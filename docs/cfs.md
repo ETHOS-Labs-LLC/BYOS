@@ -2,19 +2,19 @@
 
 ![alt text](cfs-media/image-33.png)
 
-NASA's Core Flight System (cFS) is a platform for spacecraft flight software development. It's designed to be a highly reusable, scalable, and configurable system that can support various spaceflight missions, including satellites, spacecraft, and other space-related applications. The cFS consists of a core set of reusable software components known as the Core Flight Executive (cFE), which provides the infrastructure for building flight software applications. These applications can perform various functions such as data collection, spacecraft control, and communication.
+NASA's Core Flight System (cFS) is a platform for spacecraft flight software development. It's designed to be a highly reusable, scalable, and configurable system that can support various spaceflight missions, including satellites, spacecraft, and other space-related applications. cFS consists of a core set of reusable software components known as the Core Flight Executive (cFE), which provides the infrastructure for building flight software applications. These applications can perform various functions such as **data collection**, **spacecraft control**, and **communication**.
 
-One of the key features of the cFS is its modular architecture, which allows developers to add or modify components according to the specific needs of their mission without altering the core system. This modularity and configurability make the cFS a cost-effective and efficient solution for spaceflight software development.
+One of the key features of cFS is its modular architecture, which allows developers to add or modify components according to the specific needs of their mission without altering the core system. This modularity and configurability make cFS a cost-effective and efficient solution for spaceflight software development.
 
-The cFS is released under the NASA Open Source Agreement (NOSA), making it freely available for anyone to use, modify, and distribute. This openness has facilitated a growing community of users and contributors from NASA, other government agencies, industry, and academia, who collaborate to improve and expand the system's capabilities.
+cfs is released under the NASA Open Source Agreement (NOSA), making it freely available for anyone to use, modify, and distribute. This openness has facilitated a growing community of users and contributors from NASA, other government agencies, industry, and academia, who collaborate to improve and expand the system's capabilities.
 
-By providing a robust, flexible foundation for flight software development, the cFS supports NASA's missions and objectives in exploring space, advancing our understanding of the universe, and developing the technologies needed for future space exploration.
+By providing a robust, flexible foundation for flight software development, cfs supports NASA's missions and objectives in exploring space, advancing our understanding of the universe, and developing the technologies needed for future space exploration.
 
 ## Deploying NASA's cFS
 
-The first satellite you will be deploying will be a instance of cFS running in a Docker container. This is not fully functional or operational but is a great example of what is possible using and open-source, flight proven software, in a virtual environment. 
+The first satellite you will be deploying will be a instance of **cFS** running in a **Docker** container. This is not fully functional or operational but is a great example of what is possible using and open-source, flight proven software, in a virtual environment. 
 
-To get started, you need to pull the cFS Docker container from the Docker Hub, using the following command:
+To get started, you need to pull the **cFS Docker** container from the Docker Hub, using the following command:
 
 ```
 docker pull hackethos/cfs
@@ -28,14 +28,13 @@ Once the container image has been downloaded successfully, you can launch the co
 docker run --cap-add CAP_SYS_RESOURCE --net=openc3-cosmos-network --name cfs -p1234:1234/udp -p1235:1235 --rm hackethos/cfs
 ```
 
-
 ![alt text](cfs-media/image-12.png)
 
-After running the previous command, you should see out from the container that looks like what is shown below.
+You should see output from the container that looks like the following.  
 
 ![alt text](cfs-media/image-13.png)
 
-Now that your cFS container is running, you need to generate a plugin for COSMOS that will allow COSMOS to be able to talk to cFS and vice-versus. 
+Now that your **cFS** container is running, you need to generate a **plugin** for COSMOS that will allow COSMOS to be able to **talk** to cFS and vice-versus. 
 
 If you want to see the entire process, expand the **Long Version** section below but for the purpose of this workshop, you can skip that section.
 
@@ -72,7 +71,7 @@ If you want to see the entire process, expand the **Long Version** section below
     MAP_TARGET <%= cfs_target_name %>
     ```
 
-    Save that file and then navigate to the **targets/CFS/cmd_tlm** directory and issue the following commands:
+    Save that file and issue the following commands:
 
     ```
     cd targets/CFS/cmd_tlm/
@@ -82,7 +81,7 @@ If you want to see the entire process, expand the **Long Version** section below
     
     ![alt text](cfs-media/image-18.png)
 
-    Now you will create your first packet definition by opening the file **to_lab_cmds.txt** and insert the following content.
+   You will create your first packet definition by opening the file **to_lab_cmds.txt** and insert the following content.
 
     ```
     COMMAND CFS TO_LAB_ENABLE BIG_ENDIAN "Enable telemetry"
@@ -98,7 +97,7 @@ If you want to see the entire process, expand the **Long Version** section below
     APPEND_PARAMETER    DEST_IP   144  STRING "127.0.0.1"                      "Destination IP, i.e. 172.16.9.112, pc-57"
     ```
 
-    Next, open the file **cfs_cmds.txt** and insert the following content.
+    Open the file **cfs_cmds.txt** and insert the following content.
 
     ```
     COMMAND CFS NOOP BIG_ENDIAN "NOOP Command"
@@ -131,7 +130,7 @@ If you want to see the entire process, expand the **Long Version** section below
     APPEND_PARAMETER       CHECKSUM     8   UINT   MIN_UINT8   MAX_UINT8   MIN_UINT8   ""
     ```
 
-    Finally, you need to open the file **cfs_tlm.txt** and insert the following content
+    You need to open the file **cfs_tlm.txt** and insert the following content
 
     ```
     TELEMETRY CFS HK BIG_ENDIAN "housekeeping telemetry"
@@ -155,7 +154,7 @@ If you want to see the entire process, expand the **Long Version** section below
     APPEND_ITEM      SPARE       16   UINT            "Spares"
     ```
 
-    Lastly, you need to navigate to the root directory of your plugin and build the plugin using the following command:
+    You need to navigate to the root directory of your plugin and build the plugin using the following command:
 
     ```
     cd ../../../
@@ -199,7 +198,7 @@ Then in the middle section, click on the area where is says **Click to select pl
 
 ![alt text](cfs-media/image-22.png){ width="900" }
 
-A file selection popup will appear, and you will need to navigate to where you cFS plugin is located and select it.
+A file selection popup will appear, and you will need to navigate to where you **cFS** plugin is located and select it.
 
 ![alt text](cfs-media/image-23.png){ width="900" }
 
@@ -213,7 +212,9 @@ Once completed, you can navigate to the **CmdTlmServer** section of COSMOS where
 
 ![alt text](cfs-media/image-25.png){ width="900" }
 
-Next, you need to navigate to the **Command Sender** section from the left menu. ONce there, make sure that CFS is selected as the target and then select the **TO_LAB_ENABLE** Packet. With that packet selected, you will see a field called **DEST_IP** that you will need to populate with the **openc3-operator** container IP address, **making sure to preserve the single quotes.**
+Next, you need to navigate to the **Command Sender** section from the left menu. Once there, make sure that cFS is selected as the target and then select the **TO_LAB_ENABLE** Packet. With that packet selected, you will see a field called **DEST_IP** that you will need to populate with the **openc3-operator** container IP address. 
+
+**Make sure to preserve the single quotes!**
 
 ![alt text](cfs-media/image-26.png){ width="900" }
 
@@ -225,17 +226,21 @@ Now, switch over to your terminal running cFS and you should see that the comman
 
 ![alt text](cfs-media/image-28.png){ width="900" }
 
-Now, back in COSMOS, if you navigate to the **CmdTlmServer** you should see that the **CFS_INT** interface is receiving TLM Packets.
+Now, back in COSMOS, click on the rubix cube button and select the **CmdTlmServer** menu option.  
+
+![alt text](cfs-media/cosmos_side_nav.png){ width="200" }
+
+You should see that the **CFS_INT** interface is receiving TLM Packets.
 
 ![alt text](cfs-media/image-29.png){ width="900" }
 
-As stated previously, this implementation of cFS is not feature complete but does demonstrate the fundamental concepts of telecommands and telemetry in a space system.
+As state previously, this implenentation of cFS is not complete enough to simulate a real satellite but does demonstrate the fundamental concepts of telecommands and telemetry in a space system.
 
 ## Removing cFS Plugin
 
-For the next section of this workshop, you will use the same port binding that your cFS container is currently using, so you need to do a little clean up to get ready. 
+For the next section of this workshop, you will use the same port binding that your **cFS** container is currently using, so you need to do a little clean up to get ready. 
 
-First, you will navigate to the **Admin Console** section of COSMOS and find the cFS plugin and click on the trash can icon.
+First, you will navigate to the **Admin Console** section of COSMOS and find cfs plugin and click on the trash can icon.
 
 ![alt text](cfs-media/image-30.png){ width="900" }
 
@@ -243,8 +248,8 @@ When prompted, click on **Delete** to remove the plugin from COSMOS.
 
 ![alt text](cfs-media/image-31.png){ width="900" }
 
-Next, you need to switch over to your terminal running cFS and stop it using **CRTL + C **
+Next, you need to switch over to your terminal running **cFS** and stop it using **CRTL + C**
 
 ![alt text](cfs-media/image-32.png){ width="900" }
 
-Once cFS stops, the container will be removed but can be redeployed at any time.
+Once **cFS** stops, the container will be removed but can be redeployed at any time.

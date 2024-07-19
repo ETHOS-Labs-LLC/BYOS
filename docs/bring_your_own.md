@@ -16,25 +16,27 @@ Right after Docker has downloaded the container image, you should see the new sa
 
 ![alt text](bring-your-own-media/image-34.png)
 
-With your **HackSpaceCon** satellite running, you will then need to download the pre-generated COSMOS plugin.
+With your **HackSpaceCon** satellite running, you will then need to download the pre-generated **COSMOS** plugin.
 
-In a new terminal window, you can then run the following command to download the pre-generated COMSOS plugin:
+In a new terminal window, you can then run the following command to download the pre-generated **COMSOS** plugin:
 
 ```
 wget https://byos.ethoslabs.space/openc3-cosmos-hackspacecon-1-1.0.0.gem
 ```
 
-OR you click the following link from within your **VM**'s browser:
+**OR** you click the following link from within your **VM**'s browser:
 
 Click Here: [Download HSC-1 Plugin](openc3-cosmos-hackspacecon-1-1.0.0.gem)
 
 ![alt text](bring-your-own-media/image-35.png)
 
-After you have downloaded the plugin file, you need to get the IP address of your container using the following command, looking for the entry for **HackSpaceCon** as well as the **openc3-operator** container:
+After you have downloaded the plugin file, you need to get the IP address of your container using the following command:
 
 ```
 docker network inspect openc3-cosmos-network
 ```
+
+Look for the entry for **HackSpaceCon** as well as the **openc3-operator** container.  
 
 ![alt text](bring-your-own-media/image-39.png)
 
@@ -54,7 +56,7 @@ Once installation and configuration is complete, you can click on the **CmdTlmSe
 
 ![alt text](bring-your-own-media/image-41.png)
 
-Next click on the **Command Sender** option and make sure **HackSpaceCon-1** is selected as the target. Then select **SAT_ENA_TLM** as the packet and in the **DEST_IP** field, insert the IP address of your **openc3-operator** container and then click **Send**.
+Next click on the **Command Sender** option and make sure **HackSpaceCon_1** is selected as the target. Then select **SAT_ENA_TLM** as the packet and in the **DEST_IP** field, insert the IP address of your **openc3-operator** container and then click **Send**.
 
 ![alt text](bring-your-own-media/image-44.png)
 
