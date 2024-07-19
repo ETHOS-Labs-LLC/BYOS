@@ -1,6 +1,6 @@
 # Build Your Own Satellite
 
-In this portion of the workshop, you are building and deploy your own simple virtual satellite and integrate it with OpenC3 COSMOS.
+In this portion of the workshop, you are building and deploying your own simple virtual satellite and integrating it with OpenC3 COSMOS.
 
 ## Building and Deploying Your Satellite
 
@@ -10,7 +10,7 @@ To get started, you will need to open a terminal window and create a working dir
 mkdir BYOS && cd BYOS
 ```
 
-Once in the BYOS directory, you are going to need to create the file what will run your simulated satellite. Using your text editor of choice, create the file **sat.py**. If you are following along, you can use the following command to use the text editor **nano**:
+Once in the BYOS directory, you are going to need to create the file that will run your simulated satellite. Using your text editor of choice, create the file **sat.py**. If you are following along, you can use the following command to use the text editor **nano**:
 
 ```
 nano sat.py
@@ -116,7 +116,7 @@ docker build -t byos .
 
 ![alt text](build-your-own-media/image-47.png)
 
-Once the build process has completed, you can deploy your freshly minted satellite using the following Docker command:
+Once the build process has been completed, you can deploy your freshly minted satellite using the following Docker command:
 
 ```
 docker run --net=openc3-cosmos-network --name byos -p1234:1234/udp -p1235:1235 --rm byos
@@ -130,7 +130,7 @@ You should see a message stating that your satellite is waiting for commands as 
 
 ## Generate COSMOS Plugin.
 
-To actually interact with your satellite, you need to create a plugin file that will allow COSMOS to talk to your virtual bird in the sky. 
+To interact with your satellite, you need to create a plugin file that will allow COSMOS to talk to your virtual bird in the sky. 
 
 First, in a new terminal window navigate to your **cosmos** directory that you previously used when deploying COSMOS.
 
@@ -146,9 +146,9 @@ Once in the **cosmos** directory, you will need to issue the following command t
 
 ![alt text](build-your-own-media/image-49.png)
 
-After successfully generation of the plugin framework, you will need to move into the newly created directory use the command **cd openc3-cosmos-byos**.
+After successfully generation of the plugin framework, you will need to move into the newly created directory using the command **cd openc3-cosmos-byos**.
 
-Then, you can issue the following command to generate the targets structure needed, taking note of the two **..** before the slash. These are needed because the script is up one directory from where you are currently.
+Then, you can issue the following command to generate the target structure needed, taking note of the two **..** before the slash. These are needed because the script is up one directory from where you are currently.
 
 ```
 ../openc3.sh cli generate target BYOS
@@ -156,7 +156,7 @@ Then, you can issue the following command to generate the targets structure need
 
 ![alt text](build-your-own-media/image-50.png)
 
-After the target has been generated, the next step is to edit the **plugin.txt** file using a text editor and adding the following content:
+After the target has been generated, the next step is to edit the **plugin.txt** file using a text editor and add the following content:
 
 ```
 VARIABLE ip 127.0.0.1
@@ -177,7 +177,7 @@ Next, you need to navigate into the targets directory to the **cmd_tlm** directo
 cd targets/BYOS/cmd_tlm/
 ```
 
-Once there, you can start creating your packet definition files, starting with the telecommand file, **cmd.txt**. Open this file in an editor, replace any content in the file with the following:
+Once there, you can start creating your packet definition files, starting with the telecommand file, **cmd.txt**. Open this file in an editor, and replace any content in the file with the following:
 
 ```
 COMMAND BYOS PING BIG_ENDIAN "Ping Satellite"
