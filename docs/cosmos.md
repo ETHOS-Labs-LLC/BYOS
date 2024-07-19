@@ -1,12 +1,12 @@
 ![alt text](cosmos-media/black_logo.svg)
 
-OpenC3's **COSMOS** is a command-and-control system designed for small satellite missions. It is an evolution of the **COSMOS** software initially developed by Ball Aerospace, which has been widely used in the space industry for satellite command and control. **COSMOS** provides a comprehensive suite of tools for mission planning, telemetry and command processing, data analysis, and system simulation.  Which makes it a versatile solution for managing space missions.
+OpenC3's **COSMOS** is a command-and-control system designed for small satellite missions. It is an evolution of the **COSMOS** software initially developed by Ball Aerospace.  It has been widely used in the space industry for satellite command and control. **COSMOS** provides a comprehensive suite of tools for mission planning, telemetry, and command processing, data analysis, and system simulation, which makes it a versatile solution for managing space missions.
 
 The transition to **OpenC3** represents a shift towards a more open and collaborative approach to space mission control software. **OpenC3** aims to foster a community where users and developers can contribute to the development and improvement of COSMOS, ensuring it remains a state-of-the-art tool for mission control. This open-source philosophy allows for greater innovation, adaptability, and cost efficiency, as users can customize the software to meet their specific mission requirements without the constraints of proprietary software licenses.
 
 **COSMOS** under **OpenC3** includes features such as:
 
-1. **Real-time telemetry processing:** It can process and display telemetry data in real time, allowing mission operators to monitor the status and health of their spacecraft.
+1. **Real-time telemetry processing:** It can process and display telemetry data in real-time, allowing mission operators to monitor the status and health of their spacecraft.
 2. **Command and control capabilities:** Operators can send commands to their spacecraft, automate command sequences, and ensure the safety and success of their missions.
 3. **Data analysis and visualization:** COSMOS provides tools for analyzing telemetry data, generating reports, and visualizing data trends, which are crucial for mission analysis and decision-making.
 4. **System simulation:** It can simulate spacecraft behavior and mission scenarios, helping teams test and validate their operations before execution.
@@ -32,7 +32,7 @@ cd cosmos
 ```
 
 <!--
-Before deploying **COMSOS**, you first need to make a modification to the **compose.yaml** file to allow **COSMOS** to be able to communicate with the virtual satellites you will be deploying shortly. To make the edits, use the text editor of your choice and edit the **compose.yaml** file. One such method is using **nano**.
+Before deploying **COMSOS**, you first need to modify to the **compose.yaml** file to allow **COSMOS** to be able to communicate with the virtual satellites you will be deploying shortly. To make the edits, use the text editor of your choice and edit the **compose.yaml** file. One such method is using **nano**.
 
 ```
 nano compose.yaml
@@ -128,7 +128,7 @@ On the left side of the screen, you will find the primary navigation menu as sho
 
 ![alt text](cosmos-media/cosmos_side_nav.png){ width="300" }
 
-In the main section of your window you will the **CmdTlmServer** interface that has a row of options called **Interfaces**, **Targets**, **Cmd packets**, **Tlm packets**, **Routers**, and more.  
+In the main section of your window, you will the **CmdTlmServer** interface that has a row of options called **Interfaces**, **Targets**, **Cmd packets**, **Tlm packets**, **Routers**, and more.  
 
 ![alt text](cosmos-media/cosmos_cmdtlm_server.png){ width="1100" }
 
