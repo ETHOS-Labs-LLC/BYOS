@@ -48,15 +48,15 @@ Click on the middle section as highlighted above and then find your newly downlo
 
 ![alt text](bring-your-own-media/image-37.png)
 
-Like the previous section you will need to populate the IP address field for you plugin and then click **Install**.
+Like the previous section, you will need to populate the IP address field for your plugin and then click **Install**.
 
 ![alt text](bring-your-own-media/image-40.png)
 
-Once installation and configuration is complete, you can click on the **CmdTlmServer** menu option from the side menu and see that your new interface is connected.
+Once installation and configurations are complete, you can click on the **CmdTlmServer** menu option from the side menu and see that your new interface is connected.
 
 ![alt text](bring-your-own-media/image-41.png)
 
-Next click on the **Command Sender** option and make sure **HackSpaceCon_1** is selected as the target. Then select **SAT_ENA_TLM** as the packet and in the **DEST_IP** field, insert the IP address of your **openc3-operator** container and then click **Send**.
+Next, click on the **Command Sender** option and make sure **HackSpaceCon_1** is selected as the target. Then select **SAT_ENA_TLM** as the packet and in the **DEST_IP** field, insert the IP address of your **openc3-operator** container and then click **Send**.
 
 ![alt text](bring-your-own-media/image-44.png)
 
