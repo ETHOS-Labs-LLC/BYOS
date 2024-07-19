@@ -6,13 +6,13 @@ NASA's Core Flight System (cFS) is a platform for spacecraft flight software dev
 
 One of the key features of cFS is its modular architecture, which allows developers to add or modify components according to the specific needs of their mission without altering the core system. This modularity and configurability make cFS a cost-effective and efficient solution for spaceflight software development.
 
-cfs is released under the NASA Open Source Agreement (NOSA), making it freely available for anyone to use, modify, and distribute. This openness has facilitated a growing community of users and contributors from NASA, other government agencies, industry, and academia, who collaborate to improve and expand the system's capabilities.
+cFS is released under the NASA Open Source Agreement (NOSA), making it freely available for anyone to use, modify, and distribute. This openness has facilitated a growing community of users and contributors from NASA, other government agencies, industry, and academia, who collaborate to improve and expand the system's capabilities.
 
-By providing a robust, flexible foundation for flight software development, cfs supports NASA's missions and objectives in exploring space, advancing our understanding of the universe, and developing the technologies needed for future space exploration.
+By providing a robust, flexible foundation for flight software development, cFS supports NASA's missions and objectives in exploring space, advancing our understanding of the universe, and developing the technologies needed for future space exploration.
 
 ## Deploying NASA's cFS
 
-The first satellite you will be deploying will be a instance of **cFS** running in a **Docker** container. This is not fully functional or operational but is a great example of what is possible using and open-source, flight proven software, in a virtual environment. 
+The first satellite you will be deploying will be an instance of **cFS** running in a **Docker** container. This is not fully functional or operational but is a great example of what is possible using an open-source, flight-proven software, in a virtual environment. 
 
 To get started, you need to pull the **cFS Docker** container from the Docker Hub, using the following command:
 
@@ -36,7 +36,7 @@ You should see output from the container that looks like the following.
 
 Now that your **cFS** container is running, you need to generate a **plugin** for COSMOS that will allow COSMOS to be able to **talk** to cFS and vice-versus. 
 
-If you want to see the entire process, expand the **Long Version** section below but for the purpose of this workshop, you can skip that section.
+If you want to see the entire process, expand the **Long Version** section below but for this workshop, you can skip that section.
 
 ??? Long-Version
 
@@ -130,7 +130,7 @@ If you want to see the entire process, expand the **Long Version** section below
     APPEND_PARAMETER       CHECKSUM     8   UINT   MIN_UINT8   MAX_UINT8   MIN_UINT8   ""
     ```
 
-    You need to open the file **cfs_tlm.txt** and insert the following content
+    You need to open the file **cfs_tlm.txt** and insert the following content.  
 
     ```
     TELEMETRY CFS HK BIG_ENDIAN "housekeeping telemetry"
@@ -163,7 +163,7 @@ If you want to see the entire process, expand the **Long Version** section below
     
     ![alt text](cfs-media/image-19.png)
 
-If you skipped the **Long Version** you will need to download the pre-generated cFS plugin for COSMOS using the following command or downloading it from the lik that follows. If you use the link, download it from your browser in your VM.
+If you skipped the **Long Version** you will need to download the pre-generated cFS plugin for COSMOS using the following command or downloading it from the link that follows. If you use the link, download it from your browser in your VM.
 
 ```
 wget https://byos.ethoslabs.space/openc3-cosmos-cfs-1.0.0.gem
@@ -194,11 +194,11 @@ Now you will need to go back to COSMOS in your VM and click on the **Admin Conso
 
 ![alt text](cfs-media/image-21.png){ width="900" }
 
-Then in the middle section, click on the area where is says **Click to select plugin...**
+Then in the middle section, click on the area where it says **Click to select plugin...**
 
 ![alt text](cfs-media/image-22.png){ width="900" }
 
-A file selection popup will appear, and you will need to navigate to where you **cFS** plugin is located and select it.
+A file selection popup will appear, and you will need to navigate to where your **cFS** plugin is located and select it.
 
 ![alt text](cfs-media/image-23.png){ width="900" }
 
@@ -212,7 +212,7 @@ Once completed, you can navigate to the **CmdTlmServer** section of COSMOS where
 
 ![alt text](cfs-media/image-25.png){ width="900" }
 
-Next, you need to navigate to the **Command Sender** section from the left menu. Once there, make sure that cFS is selected as the target and then select the **TO_LAB_ENABLE** Packet. With that packet selected, you will see a field called **DEST_IP** that you will need to populate with the **openc3-operator** container IP address. 
+Next, you need to navigate to the **Command Sender** section from the left menu. Once there, make sure that cFS is selected as the target, and then select the **TO_LAB_ENABLE** Packet. With that packet selected, you will see a field called **DEST_IP** that you will need to populate with the **openc3-operator** container IP address. 
 
 **Make sure to preserve the single quotes!**
 
@@ -234,13 +234,13 @@ You should see that the **CFS_INT** interface is receiving TLM Packets.
 
 ![alt text](cfs-media/image-29.png){ width="900" }
 
-As state previously, this implenentation of cFS is not complete enough to simulate a real satellite but does demonstrate the fundamental concepts of telecommands and telemetry in a space system.
+As stated previously, this implementation of cFS is not complete enough to simulate a real satellite but does demonstrate the fundamental concepts of telecommands and telemetry in a space system.
 
 ## Removing cFS Plugin
 
-For the next section of this workshop, you will use the same port binding that your **cFS** container is currently using, so you need to do a little clean up to get ready. 
+For the next section of this workshop, you will use the same port binding that your **cFS** container is currently using, so you need to do a little cleanup to get ready. 
 
-First, you will navigate to the **Admin Console** section of COSMOS and find cfs plugin and click on the trash can icon.
+First, you will navigate to the **Admin Console** section of COSMOS. Find the cFS plugin and click on the trash can icon.
 
 ![alt text](cfs-media/image-30.png){ width="900" }
 
