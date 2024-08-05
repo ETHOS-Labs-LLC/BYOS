@@ -22,8 +22,6 @@ docker pull registry.ethos.labs:443/cfs
 
 ![alt text](cfs-media/image-11.png)
 
-![alt text](image.png)
-
 Once the container image has been downloaded successfully, you can launch the container using the following command:
 
 ```

@@ -115,7 +115,6 @@ docker build -t byos .
 ```
 
 ![alt text](build-your-own-media/image-47.png)
-![alt text](image.png)
 
 Once the build process has been completed, you can deploy your freshly minted satellite using the following Docker command:
 
@@ -156,7 +155,6 @@ Then, you can issue the following command to generate the target structure neede
 ```
 
 ![alt text](build-your-own-media/image-50.png)
-![alt text](image.png)
 
 After the target has been generated, the next step is to edit the **plugin.txt** file using a text editor and add the following content:
 
