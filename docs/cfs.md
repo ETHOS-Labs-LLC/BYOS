@@ -17,15 +17,17 @@ The first satellite you will be deploying will be an instance of **cFS** running
 To get started, you need to pull the **cFS Docker** container from the Docker Hub, using the following command:
 
 ```
-docker pull hackethos/cfs
+docker pull registry.ethos.labs:443/cfs
 ```
 
 ![alt text](cfs-media/image-11.png)
 
+![alt text](image.png)
+
 Once the container image has been downloaded successfully, you can launch the container using the following command:
 
 ```
-docker run --cap-add CAP_SYS_RESOURCE --net=openc3-cosmos-network --name cfs -p1234:1234/udp -p1235:1235 --rm hackethos/cfs
+docker run --cap-add CAP_SYS_RESOURCE --net=openc3-cosmos-network --name cfs -p1234:1234/udp -p1235:1235 --rm registry.ethos.labs:443/cfs
 ```
 
 ![alt text](cfs-media/image-12.png)
@@ -47,7 +49,7 @@ If you want to see the entire process, expand the **Long Version** section below
     ```
     
     ![alt text](cfs-media/image-16.png)
-
+  
     Next, you need to **cd** into the newly created plugin directory to generate a target with the following commands:
 
     ```
@@ -56,7 +58,7 @@ If you want to see the entire process, expand the **Long Version** section below
     ```
     
     ![alt text](cfs-media/image-17.png)
-
+  
     Now, in your favorite text editor of choice, open the **plugin.txt** file and **replace** the contents with the following:
 
     ```
@@ -81,7 +83,7 @@ If you want to see the entire process, expand the **Long Version** section below
     
     ![alt text](cfs-media/image-18.png)
 
-   You will create your first packet definition by opening the file **to_lab_cmds.txt** and insert the following content.
+    You will create your first packet definition by opening the file **to_lab_cmds.txt** and insert the following content.
 
     ```
     COMMAND CFS TO_LAB_ENABLE BIG_ENDIAN "Enable telemetry"
@@ -160,13 +162,13 @@ If you want to see the entire process, expand the **Long Version** section below
     cd ../../../
     ../openc3.sh cli rake build VERSION=1.0.0 .
     ```
-    
-    ![alt text](cfs-media/image-19.png)
 
+    ![alt text](cfs-media/image-19.png)
+  
 If you skipped the **Long Version** you will need to download the pre-generated cFS plugin for COSMOS using the following command or downloading it from the link that follows. If you use the link, download it from your browser in your VM.
 
 ```
-wget https://byos.ethoslabs.space/openc3-cosmos-cfs-1.0.0.gem
+wget https://byos.ethos.labs/openc3-cosmos-cfs-1.0.0.gem
 ```
 
 Click Here: [Download cFS Plugin](openc3-cosmos-cfs-1.0.0.gem)

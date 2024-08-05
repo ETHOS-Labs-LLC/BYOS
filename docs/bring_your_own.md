@@ -5,18 +5,18 @@ In this last section of the workshop, you will learn how you can deploy a pre-bu
 Once again, you will use Docker to deploy your virtual satellite but this time, you do not have to build it from scratch. Rather, you will simply need to deploy the new satellite using the following command:
 
 ```
-docker run --net=openc3-cosmos-network --name HackSpaceCon -p1234:1234/udp -p1337:1337 --rm hackethos/hsc-1
+docker run --net=openc3-cosmos-network --name BYOS-1 -p1234:1234/udp -p1337:1337 --rm registry.ethos.labs:443/byos-1
 ```
 
 ![alt text](bring-your-own-media/image-63.png)
 
-The previous command will download the container image and then deploy it with the name **HackSpaceCon**.
+The previous command will download the container image and then deploy it with the name **BYOS-1**.
 
 Right after Docker has downloaded the container image, you should see the new satellite running in your terminal window like what is shown below.
 
 ![alt text](bring-your-own-media/image-34.png)
 
-With your **HackSpaceCon** satellite running, you will then need to download the pre-generated **COSMOS** plugin.
+With your **BYOS-1** satellite running, you will then need to download the pre-generated **COSMOS** plugin.
 
 In a new terminal window, you can then run the following command to download the pre-generated **COMSOS** plugin:
 
@@ -26,7 +26,7 @@ wget https://byos.ethoslabs.space/openc3-cosmos-hackspacecon-1-1.0.0.gem
 
 **OR** you click the following link from within your **VM**'s browser:
 
-Click Here: [Download HSC-1 Plugin](openc3-cosmos-hackspacecon-1-1.0.0.gem)
+Click Here: [Download BYOS-1 Plugin](openc3-cosmos-byos-1-1.0.0.gem)
 
 ![alt text](bring-your-own-media/image-35.png)
 
@@ -36,7 +36,7 @@ After you have downloaded the plugin file, you need to get the IP address of you
 docker network inspect openc3-cosmos-network
 ```
 
-Look for the entry for **HackSpaceCon** as well as the **openc3-operator** container.  
+Look for the entry for **BYOS-1** as well as the **openc3-operator** container.  
 
 ![alt text](bring-your-own-media/image-39.png)
 
@@ -56,11 +56,11 @@ Once installation and configurations are complete, you can click on the **CmdTlm
 
 ![alt text](bring-your-own-media/image-41.png)
 
-Next, click on the **Command Sender** option and make sure **HackSpaceCon_1** is selected as the target. Then select **SAT_ENA_TLM** as the packet and in the **DEST_IP** field, insert the IP address of your **openc3-operator** container and then click **Send**.
+Next, click on the **Command Sender** option and make sure **BYOS_1** is selected as the target. Then select **SAT_ENA_TLM** as the packet and in the **DEST_IP** field, insert the IP address of your **openc3-operator** container and then click **Send**.
 
 ![alt text](bring-your-own-media/image-44.png)
 
-Switching over to your terminal window where your **HackSpaceCon-** satellite is running, you should see that the satellite received the command successfully.
+Switching over to your terminal window where your **BYOS-1** satellite is running, you should see that the satellite received the command successfully.
 
 ![alt text](bring-your-own-media/image-45.png)
 

@@ -20,7 +20,7 @@ OpenC3 **COMSOS** is going to be the command-and-control system that will be uti
 To get started, you must clone the GitHub repository using the following command:
 
 ```
-git clone https://github.com/OpenC3/cosmos.git
+git clone http://git.ethos.labs:3000/byos/cosmos.git
 ```
 
 ![alt text](cosmos-media/image-3.png)
@@ -85,6 +85,7 @@ To deploy **COSMOS**, you need to run the **"openc3.sh"** shell script using the
 ```
 
 ![alt text](cosmos-media/image-6.png)
+
 
 It will take some time for the process to run if it is the first time you are running the command, as it will need to download the necessary **Docker** containers.
 
